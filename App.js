@@ -5,6 +5,7 @@ import Constants from 'expo-constants';
 // Imports from local files
 import FixedMenu from './components/FixedMenu';
 import DeviceInfo from './components/DeviceInfo';
+import Cursos from './cursos'
 
 // Primera Página APP
 export default function HomePage() {
@@ -13,25 +14,7 @@ export default function HomePage() {
       <DeviceInfo/>
 
       <View style = {styles.main}>
-        <Pressable>
-          <Image source = {require('./assets/Icons/idioma-icon.svg')} style = {styles.idioma} />
-        </Pressable>
-
-        <Image source = {require('./assets/Logos/Logo_PalmaActiva.svg')} style = {{marginTop: 57, marginBottom: 84, alignSelf: 'center'}}/>
-
-        <Pressable style = {styles.button}
-        //onPress={onPressLearnMore}
-        >
-          <Text style = {styles.textButton}> CURSOS </Text>
-        </Pressable>
-
-         <Pressable style = {styles.button}
-        //onPress={onPressLearnMore}
-        >
-          <Text style = {styles.textButton}> OFERTES </Text>
-        </Pressable>
-
-        <Image source = {require('./assets/Logos/Logo_Ajuntament.svg')} style = {{marginTop: -3, alignSelf: 'center'}}/>
+        <Cursos/>
       </View>
 
       <FixedMenu/>
@@ -42,7 +25,7 @@ export default function HomePage() {
 const styles = StyleSheet.create({
   main: {
     marginTop: 12,
-    marginBottom: 80,
+    height: '94.5vh',
     marginHorizontal: 12,
   },
 

@@ -3,14 +3,14 @@ import { Text, View, Image, Button, Pressable, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 // Imports from local files
-import FixedMenu from './components/FixedMenu';
-import DeviceInfo from './components/DeviceInfo';
 
 // Primera Página APP
 export default function HomePage() {
+  function clicked() {
+    alert('clicked')
+  }
   return (
     <View>
-      <DeviceInfo/>
 
       <View style = {styles.main}>
         <Pressable>
@@ -20,21 +20,20 @@ export default function HomePage() {
         <Image source = {require('./assets/Logos/Logo_PalmaActiva.svg')} style = {{marginTop: 57, marginBottom: 84, alignSelf: 'center'}}/>
 
         <Pressable style = {styles.button}
-        //onPress={onPressLearnMore}
+        onPress={clicked}
         >
           <Text style = {styles.textButton}> CURSOS </Text>
         </Pressable>
 
          <Pressable style = {styles.button}
-        //onPress={onPressLearnMore}
+        onPress={clicked}
         >
-          <Text style = {styles.textButton}> </Text>
+          <Text style = {styles.textButton}> OFERTAS </Text>
         </Pressable>
 
         <Image source = {require('./assets/Logos/Logo_Ajuntament.svg')} style = {{marginTop: -3, alignSelf: 'center'}}/>
       </View>
-
-      <FixedMenu/>
+      
     </View>
   );
 }
