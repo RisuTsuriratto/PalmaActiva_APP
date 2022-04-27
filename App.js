@@ -1,55 +1,44 @@
 import * as React from 'react';
-import { Text, View, Image, Button, Pressable, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
 import Constants from 'expo-constants';
 
-// Imports from local files
+// Imports Custom Components
 import FixedMenu from './components/FixedMenu';
 import DeviceInfo from './components/DeviceInfo';
-import Cursos from './cursos'
 
-// Primera Página APP
-export default function HomePage() {
+import Home from './components/HomePage';
+import Cursos from './components/CursosPage';
+
+// Import Navigation Stuff
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+
+
+// App
+export default function App() {
   return (
-    <View>
+    <NavigationContainer>
       <DeviceInfo/>
+        <View > 
+          <Text> Hola soy lo que sea </Text>
+        </View>
+        <Stack.Navigator initialRouteName="Home" >
+          <Stack.Screen name="Home" component={Home} options = {{ headerStyle: {
+            backgroundColor: '#E03E52'},
+            
+            headerTintColor: '#fff',
 
-      <View style = {styles.main}>
-        <Cursos/>
-      </View>
+            headerTitleStyle: {
+              fontWeight: 'bold', alignItems: 'flex-end'
+          },}}/>
+          <Stack.Screen name="Cursos" component={Cursos} options = {{ headerStyle: {
+            backgroundColor: '#E03E52'}, }}/>
+        </Stack.Navigator>
+
 
       <FixedMenu/>
-    </View>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  main: {
-    marginTop: 12,
-    height: '94.5vh',
-    marginHorizontal: 12,
-  },
-
-  idioma: {
-    alignSelf: 'flex-end',
-  },
-
-  button: {
-    alignSelf: 'center',
-    height: 98,
-    width: '90%',
-    backgroundColor: '#E03E52',
-
-    // Alinea el texto en el centro del botón
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    marginBottom: 72,
-  },
-
-  textButton: {
-    color: '#ffffff',
-    fontSize: '1.5rem',
-    fontWeight: '600',
-  }
-
-});

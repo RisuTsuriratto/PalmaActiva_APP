@@ -1,15 +1,21 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
 
-export default function FixedMenu() {
+
+// Fixed Menu
+export default function FixedMenu({ navigation }) {
+  function goHome() {
+    navigation.push('Home');
+  }
+
   return (
     <View style={styles.container}>
-      <Pressable style={styles.buttonMenu} /*onPress = {//onPressDoX}*/>
+      <Pressable style={styles.buttonMenu} onPress = {goHome}>
         <Image source = {require('../assets/Icons/inici-icon.svg')} />
         <Text style={styles.iconTitle}> Inici </Text>
       </Pressable>
 
-      <Pressable style={styles.buttonMenu} onPress = {alert("Hola")}>
+      <Pressable style={styles.buttonMenu} /*onPress = {alert("Hola")}*/>
         <Image source = {require('../assets/Icons/cursos-icon.svg')} />
         <Text style={styles.iconTitle}> Cursos </Text>
       </Pressable>
@@ -27,13 +33,13 @@ export default function FixedMenu() {
   );
 }
 
+// Style
 const styles = StyleSheet.create({
   container: {
     position: 'absolute', 
     left: 0, 
     right: 0,
-    top: 707, // Sustituto del bottom porque en web no me funciona, desaparece el menú.
-    //bottom: 0,
+    bottom: 0,
     height: 65,
     
     flexDirection: 'row',
@@ -41,7 +47,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     
     backgroundColor: '#E03E52',
-    
   },
 
   buttonMenu: {
