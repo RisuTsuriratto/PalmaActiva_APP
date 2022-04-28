@@ -7,11 +7,11 @@ import FixedMenu from './FixedMenu';
 // Home Page
 export default function HomePage({ navigation }) {
   function goCursos() {
-    navigation.push('Cursos');
+    navigation.navigate('Cursos');
   }
 
   function goOfertas() {
-    navigation.push('Ofertas');
+    navigation.navigate('Ofertes');
   }
 
 
@@ -30,7 +30,7 @@ export default function HomePage({ navigation }) {
           </Pressable>
 
           <Pressable style = {styles.button} onPress={goOfertas} >
-            <Text style = {styles.textButton}> OFERTAS </Text>
+            <Text style = {styles.textButton}> OFERTES </Text>
           </Pressable>
 
           <Image source = {require('../assets/Logos/Logo_Ajuntament.svg')} style = {{marginTop: -3, alignSelf: 'center'}}/>

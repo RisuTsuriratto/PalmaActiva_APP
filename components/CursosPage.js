@@ -11,7 +11,7 @@ export default function DeviceInfo({ navigation }) {
   return (
     <View>
       <View style = {styles.main}>
-        <Text> Holiii </Text>
+        <Text> Holiii soy la página de cursos</Text>
       </View>
     </View>
   );
