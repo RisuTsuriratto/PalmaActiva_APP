@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Text, View, Image, Button, Pressable, Dimensions, StyleSheet } from 'react-native';
+import { Text, View, Image, Button, Pressable, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 
 import FixedMenu from './FixedMenu';
@@ -29,11 +29,10 @@ export default function HomePage({ navigation }) {
           
        <Pressable style = {styles.idioma} 
        onPress={() => {
-         setIsVisible(!isVisible);}}
-         default={!isVisible}>
+         setIsVisible(!isVisible);}}>
         <Image source = {require('../assets/Icons/idioma-icon.svg')}/>
       </Pressable>
-      {isVisible ? (<DropDown />) : null}
+      {isVisible ? null : (<DropDown />)}
           <Image source = {require('../assets/Logos/Logo_PalmaActiva.svg')} style = {{marginTop: 57, marginBottom: 84, alignSelf: 'center'}}/>
 
           <Pressable style = {styles.button} onPress={goCursos} >

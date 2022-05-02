@@ -10,55 +10,61 @@ export default function Menu() {
     containerStyle: {
       width: 140,
       left: 10,
+      padding: 10,
+      zIndex: 10
+    }},
+    {label: '', value: '',
+    containerStyle: {
+      width: 140,
+      left: 10,
       borderBottomColor: '#CFCFCF',
-      borderBottomWidth: 1,
-      padding: 10
+      borderBottomWidth: 1
     }},
     {label: 'Català', value: 'CAT',
     containerStyle: {
-      padding: 10
+      padding: 10,
+      zIndex: 10
     }},
   ]);
 
-  DropDownPicker.setMode("BADGE");
 
   return (
     <View style={styles.container}>
       <Triangle/>
-      <DropDownPicker
-        open={true}
-        value={value}
-        items={items}
-        setOpen={setOpen}
-        setValue={setValue}
-        setItems={setItems}
-        placeholder=""
-        showArrowIcon={false}
-        dropdownIconColor= '#E03E52'
-        onSelectItem={(item) => {
-          console.log(item);
-          setOpen={closed};
-        }}
-        arrowIconStyle={{
-          left: 140,
-          width: 20,
-          height: 10,
-          color: '#E03E52'
-        }}
-        textStyle={{
-          fontSize: 20,
-          textAlign: 'center',
-          color: '#E03E52'
-        }}
-        showTickIcon={false}
-        disableBorderRadius={true}
-        dropDownContainerStyle={{
-          borderColor: '#E03E52',
-          borderWidth: 2,
-          backgroundColor: '#ffffff'
-        }}
-        maxWidth={20}
-      />
+      <View style={styles.borde}>
+        <DropDownPicker
+          open={true}
+          value={value}
+          items={items}
+          setOpen={!open}
+          setValue={setValue}
+          setItems={setItems}
+          placeholder=""
+          showArrowIcon={false}
+          dropdownIconColor= '#E03E52'
+          onSelectItem={(item) => {
+            console.log(item);
+            setOpen={closed};
+          }}
+          arrowIconStyle={{
+            left: 140,
+            width: 20,
+            height: 10,
+            color: '#E03E52'
+          }}
+          textStyle={{
+            fontSize: 20,
+            textAlign: 'center',
+            color: '#E03E52'
+          }}
+          showTickIcon={false}
+          disableBorderRadius={true}
+          dropDownContainerStyle={{
+            borderWidth: 0,
+          }}
+          maxWidth={20}
+        />
+        </View>
     </View>
   );
 
@@ -68,7 +74,6 @@ const Triangle = () => {
   return <View style={styles.triangle} />;
 };
 
-
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
@@ -76,7 +81,13 @@ const styles = StyleSheet.create({
     right: 0,
     width: 165,
     backgroundColor: '#ffffff',
-    zIndex: 100
+    zIndex: 10,
+  },
+  borde: {
+    paddingTop:1,
+    height: 100,
+    borderColor: '#E03E52',
+    borderWidth: 2,
   },
   triangle: {
     left: 139,
@@ -90,5 +101,5 @@ const styles = StyleSheet.create({
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: '#E03E52',
-  },
+  }
 });
