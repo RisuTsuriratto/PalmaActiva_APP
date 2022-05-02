@@ -1,8 +1,10 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { Text, View, Image, Button, Pressable, Dimensions, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 import FixedMenu from './FixedMenu';
+
+import DropDown from './DropDown';
 
 // Home Page
 export default function HomePage({ navigation }) {
@@ -14,15 +16,24 @@ export default function HomePage({ navigation }) {
     navigation.navigate('Ofertes');
   }
 
+  function showIdiomas(){
+    return <DropDown/>;
+  }
+
+  const [isVisible, setIsVisible] = useState(true);
 
   return (
       <View style = {{ backgroundColor: '#ffffff' }}>
       
         <View style = {styles.main}>
-          <Pressable style = {styles.idioma}>
-            <Image source = {require('../assets/Icons/idioma-icon.svg')}/>
-          </Pressable>
-        
+          
+       <Pressable style = {styles.idioma} 
+       onPress={() => {
+         setIsVisible(!isVisible);}}
+         default={!isVisible}>
+        <Image source = {require('../assets/Icons/idioma-icon.svg')}/>
+      </Pressable>
+      {isVisible ? (<DropDown />) : null}
           <Image source = {require('../assets/Logos/Logo_PalmaActiva.svg')} style = {{marginTop: 57, marginBottom: 84, alignSelf: 'center'}}/>
 
           <Pressable style = {styles.button} onPress={goCursos} >
@@ -41,7 +52,6 @@ export default function HomePage({ navigation }) {
       
   );
 }
-
 
 // Get heigth of screen
 const screenHeight = Dimensions.get('window').height;
