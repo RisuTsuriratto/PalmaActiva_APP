@@ -14,6 +14,9 @@ import FixedMenu from './components/FixedMenu';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+// Import Dropdown Stuff
+import DropDownPicker from 'react-native-dropdown-picker'
+
 const Stack = createNativeStackNavigator();
 
 
@@ -32,4 +35,3 @@ export default function App() {
     
   );
 }
-
