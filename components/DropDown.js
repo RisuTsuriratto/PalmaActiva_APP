@@ -3,7 +3,7 @@ import { Button, View, Image, Pressable, ScrollView, StyleSheet, Dimensions, Tex
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function Menu() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
     {label: 'Español', value: 'ESP',
@@ -12,13 +12,6 @@ export default function Menu() {
       left: 10,
       padding: 10,
       zIndex: 10
-    }},
-    {label: '', value: '',
-    containerStyle: {
-      width: 140,
-      left: 10,
-      borderBottomColor: '#CFCFCF',
-      borderBottomWidth: 1
     }},
     {label: 'Català', value: 'CAT',
     containerStyle: {
@@ -36,15 +29,10 @@ export default function Menu() {
           open={true}
           value={value}
           items={items}
-          setOpen={!open}
-          setValue={setValue}
-          setItems={setItems}
           placeholder=""
           showArrowIcon={false}
-          dropdownIconColor= '#E03E52'
           onSelectItem={(item) => {
             console.log(item);
-            setOpen={closed};
           }}
           arrowIconStyle={{
             left: 140,
@@ -57,12 +45,17 @@ export default function Menu() {
             textAlign: 'center',
             color: '#E03E52'
           }}
-          showTickIcon={false}
-          disableBorderRadius={true}
+          closeAfterSelecting={true}
+          closeOnBackPressed={true}
+          itemSeparator={true}
+          itemSeparatorStyle={{
+            backgroundColor: "#CFCFCF",
+            width: 140,
+            left: 10
+          }}
           dropDownContainerStyle={{
             borderWidth: 0,
           }}
-          maxWidth={20}
         />
         </View>
     </View>

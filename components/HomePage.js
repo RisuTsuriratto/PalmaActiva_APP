@@ -20,7 +20,7 @@ export default function HomePage({ navigation }) {
     return <DropDown/>;
   }
 
-  const [isVisible, setIsVisible] = useState(true);
+  const [notVisible, setNotVisible] = useState(true);
 
   return (
       <View style = {{ backgroundColor: '#ffffff' }}>
@@ -29,10 +29,10 @@ export default function HomePage({ navigation }) {
           
        <Pressable style = {styles.idioma} 
        onPress={() => {
-         setIsVisible(!isVisible);}}>
+         setNotVisible(!notVisible);}}>
         <Image source = {require('../assets/Icons/idioma-icon.svg')}/>
       </Pressable>
-      {isVisible ? null : (<DropDown />)}
+      {notVisible ? null : (<DropDown />)}
           <Image source = {require('../assets/Logos/Logo_PalmaActiva.svg')} style = {{marginTop: 57, marginBottom: 84, alignSelf: 'center'}}/>
 
           <Pressable style = {styles.button} onPress={goCursos} >
