@@ -2,7 +2,10 @@ import * as React from 'react';
 import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
 
 import Home from '../components/HomePage';
-import Cursos from '../components/CursosPage';
+import Cursos from '../components/ListPage';
+
+
+import Title from '../components/HeaderTitle';
 
 // Import Navigation Stuff
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,8 +13,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
+
 // Fixed Menu
 export default function FixedMenu({ navigation }) {
+
   return (
     <Tab.Navigator style = {styles.container}>
       <Tab.Screen name= "Home" component={Home} 
@@ -25,7 +30,7 @@ export default function FixedMenu({ navigation }) {
           ), 
           
           headerStyle: {height: 0},
-          tabBarStyle: {backgroundColor: '#E03E52', height: 65,} 
+          tabBarStyle: {backgroundColor: '#E03E52', height: 65} 
         })}
       />
 
@@ -39,7 +44,17 @@ export default function FixedMenu({ navigation }) {
             </Pressable>
           ), 
           
-          headerStyle: {backgroundColor: '#E03E52', color: '#ffffff'},
+          // Header style
+          headerStyle: {backgroundColor: '#E03E52', alignItems: 'flex-end', height: 45, marginTop: 12},
+          headerTitleStyle: {
+            display: 'none',
+          },
+
+          // Renderiza el botón de volver y el titulo
+          headerLeft: (props) => ( 'none' ),
+          headerRight: (props) => ( <Title title="Cursos"/> ),
+
+          // Menu Style
           tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
         })}
       />
@@ -54,7 +69,16 @@ export default function FixedMenu({ navigation }) {
             </Pressable>
           ), 
           
-          headerStyle: {backgroundColor: '#E03E52', color: '#ffffff'},
+            // Header style
+          headerStyle: {backgroundColor: '#E03E52', alignItems: 'flex-end',  height: 45},
+          headerTitleStyle: {
+            display: 'none',
+          },
+
+          // Renderiza el botón de volver y el titulo
+          headerLeft: (props) => ( 'none' ),
+          headerRight: (props) => ( <Title title="Ofertes"/> ),
+
           tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
         })}
       />
@@ -69,7 +93,16 @@ export default function FixedMenu({ navigation }) {
             </Pressable>
           ), 
           
-          headerStyle: {backgroundColor: '#E03E52', color: '#ffffff'},
+            // Header style
+          headerStyle: {backgroundColor: '#E03E52', alignItems: 'flex-end',  height: 45},
+          headerTitleStyle: {
+            display: 'none',
+          },
+
+          // Renderiza el botón de volver y el titulo
+          headerLeft: (props) => ( 'none' ),
+          headerRight: (props) => ( <Title title="Perfil de l'usuari"/> ),
+
           tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
         })}
       />

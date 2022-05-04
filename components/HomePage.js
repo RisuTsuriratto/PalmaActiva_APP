@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import { Text, View, Image, Button, Pressable, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
+import * as React from 'react';
+import { Text, View, Image, Button, Pressable, Dimensions, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
+import DeviceInfo from './DeviceInfo';
 
-import FixedMenu from './FixedMenu';
-
-import DropDown from './DropDown';
+import {useRoute} from '@react-navigation/native';
 
 // Home Page
 export default function HomePage({ navigation }) {
@@ -16,23 +15,19 @@ export default function HomePage({ navigation }) {
     navigation.navigate('Ofertes');
   }
 
-  function showIdiomas(){
-    return <DropDown/>;
-  }
-
-  const [notVisible, setNotVisible] = useState(true);
+  const route = useRoute();
+  var routeText = route.name;
 
   return (
+    
       <View style = {{ backgroundColor: '#ffffff' }}>
-      
+      <DeviceInfo />
+     
         <View style = {styles.main}>
-          
-       <Pressable style = {styles.idioma} 
-       onPress={() => {
-         setNotVisible(!notVisible);}}>
-        <Image source = {require('../assets/Icons/idioma-icon.svg')}/>
-      </Pressable>
-      {notVisible ? null : (<DropDown />)}
+          <Pressable style = {styles.idioma}>
+            <Image source = {require('../assets/Icons/idioma-icon.svg')}/>
+          </Pressable>
+        
           <Image source = {require('../assets/Logos/Logo_PalmaActiva.svg')} style = {{marginTop: 57, marginBottom: 84, alignSelf: 'center'}}/>
 
           <Pressable style = {styles.button} onPress={goCursos} >
@@ -45,12 +40,11 @@ export default function HomePage({ navigation }) {
 
           <Image source = {require('../assets/Logos/Logo_Ajuntament.svg')} style = {{marginTop: -3, alignSelf: 'center'}}/>
         </View>
-      
+        
       </View>
-
-      
   );
 }
+
 
 // Get heigth of screen
 const screenHeight = Dimensions.get('window').height;
