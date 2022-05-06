@@ -1,17 +1,22 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Button, Dimensions } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 
 import FixedMenu from './FixedMenu';
+import DeviceInfo from './DeviceInfo';
+import Header from './HeaderMenu';
 
-export default function DeviceInfo({ navigation }) {
-  function goBack() {
-    navigation.navigate('Home');
-  }
+export default function ListPage() {
+  // Variables
+  var route = useRoute();
+  var routeName = route.name;
 
   return (
     <View>
+      <DeviceInfo />
+      <Header />
       <View style = {styles.main}>
-        <Text> Holiii soy la página de cursos</Text>
+        <Text> Holiii soy la página de {routeName.toLowerCase()}</Text>
       </View>
     </View>
   );

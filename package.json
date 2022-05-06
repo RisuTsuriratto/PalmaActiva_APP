@@ -19,7 +19,7 @@
     "react-native-paper": "4.9.2",
     "react-native-screens": "~3.10.1",
     "@react-navigation/native": "*",
-    "react-native-dropdown-picker": "*",
+    "@react-navigation/elements": "*",
     "@react-navigation/bottom-tabs": "*",
     "@react-navigation/native-stack": "*",
     "react-native-safe-area-context": "3.3.2"
