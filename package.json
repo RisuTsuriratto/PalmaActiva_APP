@@ -22,7 +22,8 @@
     "@react-navigation/elements": "*",
     "@react-navigation/bottom-tabs": "*",
     "@react-navigation/native-stack": "*",
-    "react-native-safe-area-context": "3.3.2"
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-dropdown-picker": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
