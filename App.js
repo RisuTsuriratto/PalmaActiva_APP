@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { View, Image, Pressable, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
 
-
 // Imports Custom Components
-import DeviceInfo from './components/DeviceInfo';
-
 import Home from './components/HomePage';
 import List from './components/ListPage';
+import Details from './components/Details_ListItem';
 
 import FixedMenu from './components/FixedMenu';
 import FixedMenuComponent from './components/FixedMenu_Component';
@@ -58,71 +57,80 @@ export default function App() {
   });
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home} 
-          options={({ navigation }) => ({
-            headerStyle:  {height: 0}, 
-
-            tabBarButton: (props) => (
-              <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Home')}>
-                <Image source = {require('./assets/Icons/inici-icon.svg')} />
-                <Text style={styles.iconTitle}> Inici </Text>
-              </Pressable>
-            ), 
-
-            tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
-          })}
-        />
-        
-        <Tab.Screen name="Cursos" component={List}
-           options={({ navigation }) => ({
-            headerStyle:  {height: 0}, 
-            headerTitleStyle: {display: 'none'},
-
-            tabBarButton: (props) => (
-              <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Cursos')}>
-                <Image source = {require('./assets/Icons/cursos-icon.svg')} />
-                <Text style={styles.iconTitle}> Cursos </Text>
-              </Pressable>
-            ), 
-
-            tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
-          })}
-        />
-        <Tab.Screen name="Ofertes" component={List} 
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={Home} 
             options={({ navigation }) => ({
-            headerStyle:  {height: 0}, 
-            headerTitleStyle: {display: 'none'},
+              headerStyle:  {height: 0}, 
 
-            tabBarButton: (props) => (
-              <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Ofertes')}>
-                <Image source = {require('./assets/Icons/ofertes-icon.svg')} />
-                <Text style={styles.iconTitle}> Ofertes </Text>
-              </Pressable>
-            ), 
+              tabBarButton: (props) => (
+                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Home')}>
+                  <Image source = {require('./assets/Icons/inici-icon.svg')} />
+                  <Text style={styles.iconTitle}> Inici </Text>
+                </Pressable>
+              ), 
 
-            tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
-          })}
-        />
-        <Tab.Screen name="Usuari" component={'none'} 
+              tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
+            })}
+          />
+          
+          <Tab.Screen name="Cursos" component={List}
             options={({ navigation }) => ({
-            headerStyle:  {height: 0}, 
-            headerTitleStyle: {display: 'none'},
+              header: () => <Header/>, 
 
-            tabBarButton: (props) => (
-              <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Usuari')}>
-                <Image source = {require('./assets/Icons/usuari-icon.svg')} />
-                <Text style={styles.iconTitle}> {userText} </Text>
-              </Pressable>
-            ), 
+              tabBarButton: (props) => (
+                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Cursos')}>
+                  <Image source = {require('./assets/Icons/cursos-icon.svg')} />
+                  <Text style={styles.iconTitle}> Cursos </Text>
+                </Pressable>
+              ), 
 
-            tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
-          })}
-        />
-      </Tab.Navigator>
+              tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
+            })}
+          />
+          <Tab.Screen name="Ofertes" component={List} 
+              options={({ navigation }) => ({
+              header: () => <Header/>, 
 
-    </NavigationContainer>
+              tabBarButton: (props) => (
+                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Ofertes')}>
+                  <Image source = {require('./assets/Icons/ofertes-icon.svg')} />
+                  <Text style={styles.iconTitle}> Ofertes </Text>
+                </Pressable>
+              ), 
+
+              tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
+            })}
+          />
+          <Tab.Screen name="Usuari" component={'none'} 
+            options={({ navigation }) => ({
+              headerStyle:  {height: 0}, 
+
+              tabBarButton: (props) => (
+                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Usuari')}>
+                  <Image source = {require('./assets/Icons/usuari-icon.svg')} />
+                  <Text style={styles.iconTitle}> {userText} </Text>
+                </Pressable>
+              ), 
+
+              tabBarStyle: {backgroundColor: '#E03E52', height: 65},
+            })}
+          />
+          <Tab.Screen name="Detall" component={Details} 
+            options={({ navigation }) => ({
+               header: () => <Header/>,
+
+              tabBarButton: (props) => (
+                <View style = {{ display: 'none' }}></View>
+              ), 
+
+              tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
+            })}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
     
   );
 }

@@ -3,7 +3,6 @@ import { Text, View, Image, Button, Pressable, Dimensions, StyleSheet } from 're
 import Constants from 'expo-constants';
 
 import DropDown from './DropDown';
-import DeviceInfo from './DeviceInfo';
 
 import {useRoute} from '@react-navigation/native';
 
@@ -28,7 +27,6 @@ export default function HomePage({ navigation }) {
 
   return (
       <View style = {{ backgroundColor: '#ffffff' }}>
-      <DeviceInfo />
      
         <View style = {styles.main}>
           <Pressable style = {styles.idioma} 
