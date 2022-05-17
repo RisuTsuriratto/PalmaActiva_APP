@@ -2,14 +2,13 @@ import * as React from 'react';
 import { View, Image, Pressable, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
+import SplashScreen from 'react-native-splash-screen';
+import { useEffect } from 'react';
 
 // Imports Custom Components
 import Home from './components/HomePage';
 import List from './components/ListPage';
 import Details from './components/Details_ListItem';
-
-import FixedMenu from './components/FixedMenu';
-import FixedMenuComponent from './components/FixedMenu_Component';
 
 import Header from './components/HeaderMenu';
 
@@ -44,9 +43,9 @@ export default function App() {
     buttonMenu: {
       width: 60,
       height: 65,
-      marginHorizontal: '0.55rem',
       alignItems: 'center',
       justifyContent: 'center',
+      marginHorizontal: '0.645rem'
     },
 
     iconTitle: {
@@ -59,34 +58,34 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator headerMode="screen">
           <Tab.Screen name="Home" component={Home} 
             options={({ navigation }) => ({
               headerStyle:  {height: 0}, 
 
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Home')}>
-                  <Image source = {require('./assets/Icons/inici-icon.svg')} />
+                  <Image source = {require('./assets/Icons/inici-icon.png')} />
                   <Text style={styles.iconTitle}> Inici </Text>
                 </Pressable>
               ), 
 
-              tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
+              tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'}, 
             })}
           />
           
           <Tab.Screen name="Cursos" component={List}
             options={({ navigation }) => ({
-              header: () => <Header/>, 
+              header: () => <Header style={{position: 'static'}}/>, 
 
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Cursos')}>
-                  <Image source = {require('./assets/Icons/cursos-icon.svg')} />
+                  <Image source = {require('./assets/Icons/cursos-icon.png')} />
                   <Text style={styles.iconTitle}> Cursos </Text>
                 </Pressable>
               ), 
 
-              tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
+              tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'}, 
             })}
           />
           <Tab.Screen name="Ofertes" component={List} 
@@ -95,12 +94,12 @@ export default function App() {
 
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Ofertes')}>
-                  <Image source = {require('./assets/Icons/ofertes-icon.svg')} />
+                  <Image source = {require('./assets/Icons/ofertes-icon.png')} />
                   <Text style={styles.iconTitle}> Ofertes </Text>
                 </Pressable>
               ), 
 
-              tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
+              tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'}, 
             })}
           />
           <Tab.Screen name="Usuari" component={'none'} 
@@ -109,12 +108,12 @@ export default function App() {
 
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Usuari')}>
-                  <Image source = {require('./assets/Icons/usuari-icon.svg')} />
+                  <Image source = {require('./assets/Icons/usuari-icon.png')} />
                   <Text style={styles.iconTitle}> {userText} </Text>
                 </Pressable>
               ), 
 
-              tabBarStyle: {backgroundColor: '#E03E52', height: 65},
+              tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'},
             })}
           />
           <Tab.Screen name="Detall" component={Details} 
@@ -125,7 +124,7 @@ export default function App() {
                 <View style = {{ display: 'none' }}></View>
               ), 
 
-              tabBarStyle: {backgroundColor: '#E03E52', height: 65}, 
+              tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'}, 
             })}
           />
         </Tab.Navigator>
