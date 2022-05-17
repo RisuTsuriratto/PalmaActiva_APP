@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { View, Text, StyleSheet, Dimensions, FlatList, Image, Pressable } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useState } from 'react';
-import { View, Text, StyleSheet, Button, Dimensions, FlatList, Image, Pressable, TouchableHighlight } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
 import Header from './HeaderMenu';
@@ -22,7 +23,6 @@ export default function ListPage({ navigation }) {
   const [isActive3, setActive3] = useState(false);
   const [getColor3, setColor3] = useState('#E03E52');
 
-
   // Get heigth of screen
   const screenHeight = Dimensions.get('window').height;
 
@@ -35,7 +35,10 @@ export default function ListPage({ navigation }) {
 
   // Content of list Items
   for (let i = 0; i < 26; i++) {
-    listContent[i] = {key: routeName + " " + (i+1)};
+    listContent[i] = {
+      title: routeName + " " + (i+1),
+      key: i
+    };
   }
 
   function goDetails() {
@@ -98,7 +101,6 @@ export default function ListPage({ navigation }) {
             <Text style = {{color: getColor3, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> Tancades </Text>
           </Pressable>
         </View>
-        
        );
     } else {
        return null;
@@ -107,34 +109,37 @@ export default function ListPage({ navigation }) {
   }
 
   return (
-    <View style = {styles.bg}>
+    <SafeAreaView>
+      <View style = {styles.bg}>
+        <View style = {styles.main}>
+          <FlatList
+          ListHeaderComponent={
+            <View>
+              <Text style = {styles.title}>{pageTitle}</Text>
+                <View>
+                {isOfertes()}
+                </View>
 
-      <View style = {styles.main}>
-        <FlatList
-        ListHeaderComponent={
-          <View>
-            <Text style = {styles.title}>{pageTitle}</Text>
-              <View>
-               {isOfertes()}
-              </View>
+            </View>
+            }
 
-          </View>
-          }
+          data={listContent}
 
-        data={listContent}
+          showsHorizontalScrollIndicator={false}
 
-        showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => 
+            <Pressable style = {styles.list} onPress = { goDetails } >
+              <Text style = {styles.listTitle}>{item.title}</Text>
+              <Image source = {require('../assets/Icons/list-next-icon.png')} />
+            </Pressable>  
+            }
 
-        renderItem={({item}) => 
-          <Pressable style = {styles.list} onPress = { goDetails } >
-            <Text style = {styles.listTitle}>{item.key}</Text>
-            <Image source = {require('../assets/Icons/next-icon.svg')} />
-          </Pressable>  
-          }
-        />
-        <View style = {{marginBottom: screenHeight-620}}></View>
+          />
+          
+          <View style = {{marginBottom: screenHeight-630}}></View>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

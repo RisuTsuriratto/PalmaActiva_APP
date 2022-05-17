@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, View, Image, Pressable, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
+import {View, StyleSheet, Text } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function Menu() {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   triangle: {
-    left: 139,
+    left: 136,
     width: 0,
     height: 0,
     backgroundColor: 'transparent',

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, Image, Button, Pressable, Dimensions, StyleSheet } from 'react-native';
+import { Text, View, Image, Pressable, Dimensions, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
 
@@ -7,10 +7,6 @@ import Constants from 'expo-constants';
 export default function Details({ navigation }) {
   function goCursos() {
     navigation.navigate('Cursos');
-  }
-
-  function goOfertas() {
-    navigation.navigate('Ofertes');
   }
 
   return (

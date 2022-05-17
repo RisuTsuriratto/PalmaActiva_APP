@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { Text, View, Image, Button, Pressable, Dimensions, StyleSheet } from 'react-native';
+import { Text, View, Image, Pressable, Dimensions, StyleSheet } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
 
 import DropDown from './DropDown';
@@ -26,17 +27,18 @@ export default function HomePage({ navigation }) {
   var routeText = route.name;
 
   return (
-      <View style = {{ backgroundColor: '#ffffff' }}>
+    <SafeAreaView>
+      <View style = {{ backgroundColor: '#ffffff', minHeight: '92%'}}>
      
         <View style = {styles.main}>
           <Pressable style = {styles.idioma} 
           onPress={() => {
           setNotVisible(!notVisible);}}>
-            <Image source = {require('../assets/Icons/idioma-icon.svg')}/>
+            <Image source = {require('../assets/Icons/idioma-icon.png')}/>
           </Pressable>
           {notVisible ? null : (<DropDown />)}
         
-          <Image source = {require('../assets/Logos/Logo_PalmaActiva.svg')} style = {{marginTop: 57, marginBottom: 84, alignSelf: 'center'}}/>
+          <Image source = {require('../assets/Logos/Logo_PalmaActiva.png')} style = {{marginTop: 57, marginBottom: 84, alignSelf: 'center'}}/>
 
           <Pressable style = {styles.button} onPress={goCursos} >
             <Text style = {styles.textButton}> CURSOS </Text>
@@ -46,10 +48,11 @@ export default function HomePage({ navigation }) {
             <Text style = {styles.textButton}> OFERTES </Text>
           </Pressable>
 
-          <Image source = {require('../assets/Logos/Logo_Ajuntament.svg')} style = {{marginTop: -3, alignSelf: 'center'}}/>
+          <Image source = {require('../assets/Logos/Logo_Ajuntament.png')} style = {{marginTop: -3, alignSelf: 'center'}}/>
         </View>
         
       </View>
+    </SafeAreaView>
   );
 }
 

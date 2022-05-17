@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pressable, Text, Image } from 'react-native';
+import { Text } from 'react-native';
 
 export default function HeaderTitle({title}) {
   return (
