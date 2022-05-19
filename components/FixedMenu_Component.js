@@ -28,19 +28,19 @@ export default function FixedMenu() {
     <View style = {styles.container}>
       <View style = {{flexDirection: 'row'}}>
         <Pressable style = {styles.buttonMenu} onPress={goHome}>
-          <Image source = {require('../assets/Icons/inici-icon.svg')} />
+          <Image source = {require('../assets/Icons/inici-icon.png')} />
           <Text style={styles.iconTitle}> Inici </Text>
         </Pressable>
         <Pressable style = {styles.buttonMenu} onPress={goCursos}>
-          <Image source = {require('../assets/Icons/cursos-icon.svg')} />
+          <Image source = {require('../assets/Icons/cursos-icon.png')} />
           <Text style={styles.iconTitle}> Cursos </Text>
         </Pressable>
         <Pressable style = {styles.buttonMenu} onPress={goOfertas}>
-          <Image source = {require('../assets/Icons/ofertes-icon.svg')} />
+          <Image source = {require('../assets/Icons/ofertes-icon.png')} />
           <Text style={styles.iconTitle}> Ofertes </Text>
         </Pressable>
         <Pressable style = {styles.buttonMenu} onPress={goUsuari}>
-          <Image source = {require('../assets/Icons/usuari-icon.svg')} />
+          <Image source = {require('../assets/Icons/usuari-icon.png')} />
           <Text style={styles.iconTitle}> Usuari </Text>
         </Pressable>
       </View>

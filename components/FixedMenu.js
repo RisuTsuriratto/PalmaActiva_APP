@@ -24,7 +24,7 @@ export default function FixedMenu({ navigation }) {
           
           tabBarButton: (props) => (
             <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Home')}>
-              <Image source = {require('../assets/Icons/inici-icon.svg')} />
+              <Image source = {require('../assets/Icons/inici-icon.png')} />
               <Text style={styles.iconTitle}> Inici </Text>
             </Pressable>
           ), 
@@ -39,7 +39,7 @@ export default function FixedMenu({ navigation }) {
           
           tabBarButton: (props) => (
             <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Cursos')}>
-              <Image source = {require('../assets/Icons/cursos-icon.svg')} />
+              <Image source = {require('../assets/Icons/cursos-icon.png')} />
               <Text style={styles.iconTitle}> Cursos </Text>
             </Pressable>
           ), 
@@ -64,7 +64,7 @@ export default function FixedMenu({ navigation }) {
           
           tabBarButton: (props) => (
             <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Ofertes')}>
-              <Image source = {require('../assets/Icons/ofertes-icon.svg')} />
+              <Image source = {require('../assets/Icons/ofertes-icon.png')} />
               <Text style={styles.iconTitle}> Ofertes </Text>
             </Pressable>
           ), 
@@ -88,7 +88,7 @@ export default function FixedMenu({ navigation }) {
           
           tabBarButton: (props) => (
             <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Usuari')}>
-              <Image source = {require('../assets/Icons/usuari-icon.svg')} />
+              <Image source = {require('../assets/Icons/usuari-icon.png')} />
               <Text style={styles.iconTitle}> Usuari </Text>
             </Pressable>
           ), 
