@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 // Imports Custom Components
 import Home from './components/HomePage';
+import Login from './components/LoginPage';
 import List from './components/ListPage';
 import Details from './components/Details_ListItem';
 import Header from './components/HeaderMenu';
@@ -61,12 +62,12 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <Tab.Navigator headerMode="screen">
-          <Tab.Screen name="Home" component={Home} 
+          <Tab.Screen name="Login" component={Login} 
             options={({ navigation }) => ({
               headerStyle:  {height: 0}, 
 
               tabBarButton: (props) => (
-                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Home')}>
+                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Login')}>
                   <Image source = {require('./assets/Icons/inici-icon.png')} />
                   <Text style={styles.iconTitle}> {i18n.t('Navigator.Inici')} </Text>
                 </Pressable>

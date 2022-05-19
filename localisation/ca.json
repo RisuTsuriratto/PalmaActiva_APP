@@ -29,5 +29,11 @@
     "Obertes": "Obertes",
     "En tràmit": "En tràmit",
     "Tancades": "Tancades"
+  },
+  "LoginPage": {
+    "Inici de sessió": "Inici de sessió",
+    "Tornar": "Tornar",
+    "Usuari": "Usuari",
+    "Clau de pas": "Clau de pas"
   }
 }

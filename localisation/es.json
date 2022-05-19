@@ -10,12 +10,12 @@
     "OFERTES": "OFERTAS"
   },
   "HeaderMenu": {
-    "Inici de sessió": "Inici de sessió",
-    "Cerca": "Cerca ",
-    "Filtres": "Filtres",
+    "Inici de sessió": "Inicio de sesión",
+    "Cerca": "Busca ",
+    "Filtres": "Filtros",
     "Tornar": "Tornar",
     "Cursos": "Cursos",
-    "Ofertes": "Ofertes",
+    "Ofertes": "Ofertas",
     "Família" : "Familia",
     "Tipus de curs" : "Tipo de curso",
     "Categoria" : "Categoría",
@@ -29,5 +29,11 @@
     "Obertes": "Abiertas",
     "En tràmit": "En trámite",
     "Tancades": "Cerradas"
+  },
+  "LoginPage": {
+    "Inici de sessió": "Inicio de sesión",
+    "Tornar": "Volver",
+    "Usuari": "Usuario",
+    "Clau de pas": "Clave de paso"
   }
 }

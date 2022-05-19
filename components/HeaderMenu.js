@@ -331,10 +331,6 @@ export default function HeaderMenu({navigation}) {
 
 
 
-
-
-
-
           <View style = {styles.flex}>
             <Pressable style = {{flexDirection: 'row', alignItems: 'center', marginBottom: '0.5rem'}} onPress = { goHome }>
               <Image source = {require('../assets/Icons/back-icon.png')} />
