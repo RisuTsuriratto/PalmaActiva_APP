@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import { Text, View, Image, Pressable, Dimensions, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import Constants from 'expo-constants';
 
 import DropDown from './DropDown';
 
 import {useRoute} from '@react-navigation/native';
+
+// Import Localisation Stuff
+import i18n from './i18n';
 
 // Home Page
 export default function HomePage({ navigation }) {
@@ -41,11 +43,11 @@ export default function HomePage({ navigation }) {
           <Image source = {require('../assets/Logos/Logo_PalmaActiva.png')} style = {{marginTop: 57, marginBottom: 84, alignSelf: 'center'}}/>
 
           <Pressable style = {styles.button} onPress={goCursos} >
-            <Text style = {styles.textButton}> CURSOS </Text>
+            <Text style = {styles.textButton}> {i18n.t('HomePage.CURSOS')} </Text>
           </Pressable>
 
           <Pressable style = {styles.button} onPress={goOfertas} >
-            <Text style = {styles.textButton}> OFERTES </Text>
+            <Text style = {styles.textButton}> {i18n.t('HomePage.OFERTES')} </Text>
           </Pressable>
 
           <Image source = {require('../assets/Logos/Logo_Ajuntament.png')} style = {{marginTop: -3, alignSelf: 'center'}}/>

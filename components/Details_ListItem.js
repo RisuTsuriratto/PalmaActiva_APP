@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Text, View, Image, Pressable, Dimensions, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import Constants from 'expo-constants';
 
 // Details List Item
 export default function Details({ navigation }) {

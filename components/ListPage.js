@@ -4,12 +4,20 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 
+// Import Localisation Stuff
+import i18n from './i18n';
+
 import Header from './HeaderMenu';
 
 export default function ListPage({ navigation }) {
   // Variables
   var route = useRoute();
-  var routeName = route.name;
+  var routeName;
+  if(route.name == 'Ofertes'){
+    routeName = i18n.t('ListPage.Ofertes');
+  }else{
+    routeName = i18n.t('ListPage.Cursos');
+  }
   var pageTitle;
   var listContent = [];
   
@@ -27,10 +35,10 @@ export default function ListPage({ navigation }) {
   const screenHeight = Dimensions.get('window').height;
 
   // Title of the page
-  if (routeName == "Cursos") {
-    pageTitle = "Cursos de formació";
+  if (route.name == "Cursos") {
+    pageTitle = i18n.t('ListPage.Cursos de formació');
   } else {
-    pageTitle = "Ofertes d'ocupació" 
+    pageTitle = i18n.t('ListPage.Ofertes ocupació');
   }
 
   // Content of list Items
@@ -86,26 +94,25 @@ export default function ListPage({ navigation }) {
 
 
   function isOfertes() {
-    if (routeName == "Ofertes") {
+    if (route.name == "Ofertes") {
        return (
         <View style = {styles.buttonContainer}>
           <Pressable onPress = {cambiarEstado1}  style = {isActive1 ? styles.filterButtonActive : styles.filterButton}>
-            <Text style = {{color: getColor1, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> Obertes </Text>
+            <Text style = {{color: getColor1, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> {i18n.t('ListPage.Obertes')} </Text>
           </Pressable>
 
           <Pressable onPress = {cambiarEstado2}  style = {isActive2 ? styles.filterButtonActive : styles.filterButton}>
-            <Text style = {{color: getColor2, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> En Tràmit </Text>
+            <Text style = {{color: getColor2, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> {i18n.t('ListPage.En tràmit')} </Text>
           </Pressable>
 
           <Pressable onPress = {cambiarEstado3}  style = {isActive3 ? styles.filterButtonActive : styles.filterButton}>
-            <Text style = {{color: getColor3, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> Tancades </Text>
+            <Text style = {{color: getColor3, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> {i18n.t('ListPage.Tancades')} </Text>
           </Pressable>
         </View>
        );
     } else {
        return null;
     }
-    
   }
 
   return (

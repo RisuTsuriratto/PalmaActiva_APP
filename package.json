@@ -20,10 +20,12 @@
     "react-native-screens": "~3.10.1",
     "@react-navigation/native": "*",
     "@react-navigation/elements": "*",
+    "react-native-dropdown-picker": "*",
     "@react-navigation/bottom-tabs": "*",
     "@react-navigation/native-stack": "*",
     "react-native-safe-area-context": "3.3.2",
-    "react-native-dropdown-picker": "*"
+    "react-native-splash-screen": "*",
+    "i18n-js": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

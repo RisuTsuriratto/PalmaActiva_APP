@@ -1,5 +1,33 @@
 {
-  "cursos": {
-    "cursos": "cursos"
+  "Navigator": {
+    "Inici": "Inici",
+    "Cursos": "Cursos",
+    "Ofertes": "Ofertes",
+    "Usuari": "Usuari"
+  },
+  "HomePage": {
+    "CURSOS": "CURSOS",
+    "OFERTES": "OFERTES"
+  },
+  "HeaderMenu": {
+    "Inici de sessió": "Inici de sessió",
+    "Cerca": "Cerca ",
+    "Filtres": "Filtres",
+    "Tornar": "Tornar",
+    "Cursos": "Cursos",
+    "Ofertes": "Ofertes",
+    "Família" : "Família",
+    "Tipus de curs" : "Tipus de curs",
+    "Categoria" : "Categoria",
+    "Especialitat" : "Especialitat"
+  },
+  "ListPage": {
+    "Cursos de formació": "Cursos de formació",
+    "Ofertes ocupació": "Ofertes d'ocupació",
+    "Ofertes": "Ofertes",
+    "Cursos": "Cursos",
+    "Obertes": "Obertes",
+    "En tràmit": "En tràmit",
+    "Tancades": "Tancades"
   }
 }
