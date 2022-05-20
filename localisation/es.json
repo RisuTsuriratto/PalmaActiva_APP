@@ -34,6 +34,34 @@
     "Inici de sessió": "Inicio de sesión",
     "Tornar": "Volver",
     "Usuari": "Usuario",
-    "Clau de pas": "Clave de paso"
+    "Clau de pas": "Clave de paso",
+    "Identificarse": "Identificarse",
+    "TextClauLogin1": "Si no dispone de usuario y contraseña también puede identificarse con",
+    "SpanClauLogin1": "tarjeta ciudadana",
+    "TextTCLogin1": "Si no dispone de tarjeta ciudadana también puede identificarse con",
+    "SpanTCLogin1": "usuario y clave",
+    "TextLogin": "¿No es usuario de PalmaActiva?",
+    "TextLoginReg": "Dáte de alta en nuestras oficinas."
+  },
+  "RegisterPage": {
+    "Registre": "Registro",
+    "Tornar": "Volver",
+    "Nom": "Nombre",
+    "Primer cognom": "Primer apellido",
+    "Segon cognom": "Segon apellido",
+    "Document": "DNI / NIE / Pasaporte",
+    "Data": "Data de nacimiento",
+    "Sexe": "Sexo",
+    "Home": "Hombre",
+    "Dona": "Mujer",
+    "Següent": "Siguiente",
+    "Carrer": "Calle",
+    "Bloc": "Bloque",
+    "Porta": "Puerta",
+    "Apartat": "Apartado de correos",
+    "Aclarament": "Aclaración de la dirección",
+    "Telèfon": "Teléfono",
+    "Adreça": "Correo electrónico",
+    "Registrarse": "Registrarse"
   }
 }

@@ -25,7 +25,8 @@
     "react-native-dropdown-picker": "*",
     "@react-navigation/bottom-tabs": "*",
     "@react-navigation/native-stack": "*",
-    "react-native-safe-area-context": "3.3.2"
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-bootsplash": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

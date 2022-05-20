@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { View, Image, Pressable, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import SplashScreen from 'react-native-splash-screen';
 import { useEffect } from 'react';
+import RNBootSplash from 'react-native-bootsplash';
 
 // Imports Custom Components
 import Home from './components/HomePage';
-import Login from './components/LoginPage';
 import List from './components/ListPage';
 import Details from './components/Details_ListItem';
 import Header from './components/HeaderMenu';
+import Login from './components/LoginPage';
+import Register from './components/RegisterPage';
 
 // Import Navigation Stuff
 import { NavigationContainer } from '@react-navigation/native';
@@ -41,6 +42,12 @@ export default function App() {
     }
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      RNBootSplash.hide({fade: true});
+    }, 3000);
+  }, []);
+
   // Style
   const styles = StyleSheet.create({
     buttonMenu: {
@@ -62,12 +69,12 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <Tab.Navigator headerMode="screen">
-          <Tab.Screen name="Login" component={Login} 
+          <Tab.Screen name="Register" component={Register} 
             options={({ navigation }) => ({
               headerStyle:  {height: 0}, 
 
               tabBarButton: (props) => (
-                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Login')}>
+                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Register')}>
                   <Image source = {require('./assets/Icons/inici-icon.png')} />
                   <Text style={styles.iconTitle}> {i18n.t('Navigator.Inici')} </Text>
                 </Pressable>
@@ -105,7 +112,7 @@ export default function App() {
               tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'}, 
             })}
           />
-          <Tab.Screen name="Usuari" component={'none'} 
+          <Tab.Screen name="Usuari" component={Login} 
             options={({ navigation }) => ({
               headerStyle:  {height: 0}, 
 
