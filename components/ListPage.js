@@ -13,6 +13,7 @@ export default function ListPage({ navigation }) {
   var routeName = route.name;
   var pageTitle;
   var listContent = [];
+  var goTo;
   
   // Button 1 - Obertes
   const [isActive1, setActive1] = useState(true);
@@ -32,8 +33,10 @@ export default function ListPage({ navigation }) {
   // Title of the page
   if (routeName == "Cursos") {
     pageTitle = "Cursos de formació";
+    goTo = "DetailCursos";
   } else {
-    pageTitle = "Ofertes d'ocupació" 
+    pageTitle = "Ofertes d'ocupació";
+    goTo = "DetailOfertes";
   }
 
   // Content of list Items
@@ -45,7 +48,11 @@ export default function ListPage({ navigation }) {
   }
 
   function goDetails() {
-    navigation.navigate('Detall');
+    if (routeName == "Cursos") {
+      navigation.navigate("Detall del curs");
+    } else {
+      navigation.navigate("Detall de l'oferta");
+    }
   }
 
   function cambiarEstado1() {
