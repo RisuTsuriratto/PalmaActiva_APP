@@ -1,19 +1,25 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Dimensions, FlatList, Image, Pressable, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, FlatList, Image, Pressable } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import { useRoute } from '@react-navigation/native';
-import { CommonActions } from '@react-navigation/native';
+
+// Import Localisation Stuff
+import i18n from './i18n';
 
 import Header from './HeaderMenu';
 
 export default function ListPage({ navigation }) {
   // Variables
   var route = useRoute();
-  var routeName = route.name;
+  var routeName;
+  if(route.name == 'Ofertes'){
+    routeName = i18n.t('ListPage.Ofertes');
+  }else{
+    routeName = i18n.t('ListPage.Cursos');
+  }
   var pageTitle;
   var listContent = [];
-  var goTo;
   
   // Button 1 - Obertes
   const [isActive1, setActive1] = useState(true);
@@ -25,18 +31,14 @@ export default function ListPage({ navigation }) {
   const [isActive3, setActive3] = useState(false);
   const [getColor3, setColor3] = useState('#E03E52');
 
-  
-
   // Get heigth of screen
   const screenHeight = Dimensions.get('window').height;
 
   // Title of the page
-  if (routeName == "Cursos") {
-    pageTitle = "Cursos de formació";
-    goTo = "DetailCursos";
+  if (route.name == "Cursos") {
+    pageTitle = i18n.t('ListPage.Cursos de formació');
   } else {
-    pageTitle = "Ofertes d'ocupació";
-    goTo = "DetailOfertes";
+    pageTitle = i18n.t('ListPage.Ofertes ocupació');
   }
 
   // Content of list Items
@@ -48,11 +50,7 @@ export default function ListPage({ navigation }) {
   }
 
   function goDetails() {
-    if (routeName == "Cursos") {
-      navigation.navigate("Detall del curs");
-    } else {
-      navigation.navigate("Detall de l'oferta");
-    }
+    navigation.navigate('Detall');
   }
 
   function cambiarEstado1() {
@@ -96,59 +94,59 @@ export default function ListPage({ navigation }) {
 
 
   function isOfertes() {
-    if (routeName == "Ofertes") {
+    if (route.name == "Ofertes") {
        return (
         <View style = {styles.buttonContainer}>
           <Pressable onPress = {cambiarEstado1}  style = {isActive1 ? styles.filterButtonActive : styles.filterButton}>
-            <Text style = {{color: getColor1, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> Obertes </Text>
+            <Text style = {{color: getColor1, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> {i18n.t('ListPage.Obertes')} </Text>
           </Pressable>
 
           <Pressable onPress = {cambiarEstado2}  style = {isActive2 ? styles.filterButtonActive : styles.filterButton}>
-            <Text style = {{color: getColor2, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> En Tràmit </Text>
+            <Text style = {{color: getColor2, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> {i18n.t('ListPage.En tràmit')} </Text>
           </Pressable>
 
           <Pressable onPress = {cambiarEstado3}  style = {isActive3 ? styles.filterButtonActive : styles.filterButton}>
-            <Text style = {{color: getColor3, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> Tancades </Text>
+            <Text style = {{color: getColor3, fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 12}}> {i18n.t('ListPage.Tancades')} </Text>
           </Pressable>
         </View>
        );
     } else {
        return null;
     }
-    
   }
 
   return (
-    <ScrollView showsVerticalScrollIndicator = {false}>
-      <SafeAreaView style = {styles.bg}>
-        <FlatList
-        ListHeaderComponent={
-          <View>
-            <Header/>
-            <Text style = {[styles.title, {marginHorizontal: 12, marginTop: '0.5rem'}]}>{pageTitle}</Text>
-              <View style = {{alignItems: 'space-between', marginHorizontal: 6}}>
-              {isOfertes()}
-              </View>
+    <SafeAreaView>
+      <View style = {styles.bg}>
+        <View style = {styles.main}>
+          <FlatList
+          ListHeaderComponent={
+            <View>
+              <Text style = {styles.title}>{pageTitle}</Text>
+                <View>
+                {isOfertes()}
+                </View>
 
-          </View>
-          }
+            </View>
+            }
 
-        data={listContent}
+          data={listContent}
 
-        showsHorizontalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
 
-        renderItem={({item}) => 
-          <Pressable style = {[styles.list, {width: '95%', margin: 'auto'}]} onPress = { goDetails } >
-            <Text style = {styles.listTitle}>{item.title}</Text>
-            <Image source = {require('../assets/Icons/list-next-icon.png')} />
-          </Pressable>  
-          }
+          renderItem={({item}) => 
+            <Pressable style = {styles.list} onPress = { goDetails } >
+              <Text style = {styles.listTitle}>{item.title}</Text>
+              <Image source = {require('../assets/Icons/list-next-icon.png')} />
+            </Pressable>  
+            }
 
-        />
-        
-        <View style = {{marginBottom: 36}}></View>
-      </SafeAreaView>
-    </ScrollView>
+          />
+          
+          <View style = {{marginBottom: screenHeight-630}}></View>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -161,12 +159,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
 
-  // main: {
-  //   height: screenHeight,
-  //   marginTop: 12,
-  //   marginBottom: 80,
-  //   marginHorizontal: 12,
-  // },
+  main: {
+    height: screenHeight - 122,
+    marginTop: 12,
+    marginBottom: 80,
+    marginHorizontal: 12,
+  },
 
   title: {
     fontWeight: 700,
@@ -213,5 +211,4 @@ const styles = StyleSheet.create({
     height: '50px',
     color: '#ffffff'
   }
-
 });
