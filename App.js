@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, Image, Pressable, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import Constants from 'expo-constants';
 import SplashScreen from 'react-native-splash-screen';
 import { useEffect } from 'react';
 
@@ -8,6 +9,7 @@ import { useEffect } from 'react';
 import Home from './components/HomePage';
 import List from './components/ListPage';
 import Details from './components/Details_ListItem';
+
 import Header from './components/HeaderMenu';
 
 // Import Navigation Stuff
@@ -16,10 +18,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Import Dropdown Stuff
-import DropDownPicker from 'react-native-dropdown-picker';
+import DropDownPicker from 'react-native-dropdown-picker'
 
-// Import Localisation Stuff
-import i18n from './components/i18n';
 
 // Create Menu Navigator
 const Tab = createBottomTabNavigator();
@@ -32,12 +32,10 @@ export default function App() {
   var user = 'user';
   var nameUser;
 
-  function getUser() {
-    if (user != 'user') {
-      return nameUser;
-    } else {
-      return i18n.t('Navigator.Usuari');
-    }
+  if (user != 'user') {
+    userText = nameUser;
+  } else {
+    userText = "Usuari";
   }
 
   // Style
@@ -68,7 +66,7 @@ export default function App() {
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Home')}>
                   <Image source = {require('./assets/Icons/inici-icon.png')} />
-                  <Text style={styles.iconTitle}> {i18n.t('Navigator.Inici')} </Text>
+                  <Text style={styles.iconTitle}> Inici </Text>
                 </Pressable>
               ), 
 
@@ -78,12 +76,12 @@ export default function App() {
           
           <Tab.Screen name="Cursos" component={List}
             options={({ navigation }) => ({
-              header: () => <Header style={{position: 'static'}}/>, 
+              headerStyle:  {height: 0}, 
 
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Cursos')}>
                   <Image source = {require('./assets/Icons/cursos-icon.png')} />
-                  <Text style={styles.iconTitle}> {i18n.t('Navigator.Cursos')} </Text>
+                  <Text style={styles.iconTitle}> Cursos </Text>
                 </Pressable>
               ), 
 
@@ -92,12 +90,12 @@ export default function App() {
           />
           <Tab.Screen name="Ofertes" component={List} 
               options={({ navigation }) => ({
-              header: () => <Header/>, 
+              headerStyle:  {height: 0}, 
 
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Ofertes')}>
                   <Image source = {require('./assets/Icons/ofertes-icon.png')} />
-                  <Text style={styles.iconTitle}> {i18n.t('Navigator.Ofertes')} </Text>
+                  <Text style={styles.iconTitle}> Ofertes </Text>
                 </Pressable>
               ), 
 
@@ -111,7 +109,7 @@ export default function App() {
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Usuari')}>
                   <Image source = {require('./assets/Icons/usuari-icon.png')} />
-                  <Text style={styles.iconTitle}> {getUser()} </Text>
+                  <Text style={styles.iconTitle}> {userText} </Text>
                 </Pressable>
               ), 
 
@@ -120,7 +118,7 @@ export default function App() {
           />
           <Tab.Screen name="Detall" component={Details} 
             options={({ navigation }) => ({
-               header: () => <Header/>,
+              headerStyle:  {height: 0},
 
               tabBarButton: (props) => (
                 <View style = {{ display: 'none' }}></View>
