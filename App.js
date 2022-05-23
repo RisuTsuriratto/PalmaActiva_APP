@@ -8,7 +8,8 @@ import { useEffect } from 'react';
 // Imports Custom Components
 import Home from './components/HomePage';
 import List from './components/ListPage';
-import Details from './components/Details_ListItem';
+import DetailCursos from './components/Details_Cursos';
+import DetailOfertes from './components/Details_Ofertes';
 
 import Header from './components/HeaderMenu';
 
@@ -116,7 +117,18 @@ export default function App() {
               tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'},
             })}
           />
-          <Tab.Screen name="Detall" component={Details} 
+          <Tab.Screen name="Detall del curs" component={DetailCursos} 
+            options={({ navigation }) => ({
+              headerStyle:  {height: 0},
+
+              tabBarButton: (props) => (
+                <View style = {{ display: 'none' }}></View>
+              ), 
+
+              tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'}, 
+            })}
+          />
+          <Tab.Screen name="Detall de l'oferta" component={DetailOfertes} 
             options={({ navigation }) => ({
               headerStyle:  {height: 0},
 
