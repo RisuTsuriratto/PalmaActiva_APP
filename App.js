@@ -10,11 +10,9 @@ import List from './components/ListPage';
 import Details from './components/Details_ListItem';
 import Header from './components/HeaderMenu';
 import Login from './components/LoginPage';
-import Register from './components/RegisterOferta2';
 
 // Import Navigation Stuff
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Import Dropdown Stuff
@@ -69,12 +67,12 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <Tab.Navigator headerMode="screen">
-          <Tab.Screen name="Register" component={Register} 
+          <Tab.Screen name="Home" component={Home} 
             options={({ navigation }) => ({
               headerStyle:  {height: 0}, 
 
               tabBarButton: (props) => (
-                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Register')}>
+                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Home')}>
                   <Image source = {require('./assets/Icons/inici-icon.png')} />
                   <Text style={styles.iconTitle}> {i18n.t('Navigator.Inici')} </Text>
                 </Pressable>
