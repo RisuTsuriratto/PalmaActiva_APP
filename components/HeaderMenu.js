@@ -10,9 +10,6 @@ import { useRoute } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// Import Localisation Stuff
-import i18n from './i18n';
-
 const Stack = createNativeStackNavigator();
 
 export default function HeaderMenu({navigation}) {
@@ -20,12 +17,8 @@ export default function HeaderMenu({navigation}) {
   var route = useRoute();
   var routeName = route.name;
 
-  if(route.name == 'Ofertes'){
-    routeName = i18n.t('HeaderMenu.Ofertes');
-  }else{
-    routeName = i18n.t('HeaderMenu.Cursos');
-  }
-  var whatToSearch = i18n.t('HeaderMenu.Cerca') + routeName.toLowerCase();
+  var whatToSearch = 'Cerca ';
+  whatToSearch += routeName.toLowerCase();
 
   var filtro1;
   var filtro2;
@@ -144,7 +137,7 @@ export default function HeaderMenu({navigation}) {
     {key: 50, title: "Segon maitre"},
     {key: 51, title: "Xef o cap de cuina"},
     {key: 52, title: "Ajudant de cuina"}, // Repetido en el 41 ????
-    {key: 53, title: "Animador/a hotel"},
+    {key: 53, title: "Animador/a hotel"}, 
     {key: 54, title: "Booking agent"}, // Repetido en el 39 ????
     {key: 55, title: "Bugader/a"},
     {key: 56, title: "Cambrer/a de barra hotel"},
@@ -199,11 +192,11 @@ export default function HeaderMenu({navigation}) {
 
   // Filter placeholder
   if (route.name == "Cursos") {
-    filtro1 = i18n.t('HeaderMenu.Família');
-    filtro2 = i18n.t('HeaderMenu.Tipus de curs');
+    filtro1 = 'Família';
+    filtro2 = 'Tipus de curs';
   } else {
-    filtro1 = i18n.t('HeaderMenu.Categoria');
-    filtro2 = i18n.t('HeaderMenu.Especialitat');
+    filtro1 = 'Categoria';
+    filtro2 = 'Especialitat';
   }
 
 
@@ -249,7 +242,7 @@ export default function HeaderMenu({navigation}) {
             
             <Pressable onPress={ logIn } style = {{borderColor: '#fff', borderWidth: 2,  width: '13rem', height: 49}}>
               <Text style = {{color: '#fff', fontSize: 15, fontWeight: 'bold', alignSelf: 'center', justifyContent: 'center', paddingTop: '0.7rem'}}> 
-                {i18n.t('HeaderMenu.Inici de sessió')} 
+                Inici de sessió 
               </Text>
             </Pressable>
           </View>
@@ -270,7 +263,7 @@ export default function HeaderMenu({navigation}) {
             </Pressable>
 
             <Pressable onPress = { openFilter } style = {{backgroundColor: '#E03E52', borderColor: '#ffffff', borderWidth: 2,  width: '94px', position: 'absolute', right: 0, top: 0, bottom: 0 }}>
-              <Text style = {{color: '#fff', fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 11}}> {i18n.t('HeaderMenu.Filtres')} </Text>
+              <Text style = {{color: '#fff', fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 11}}> Filtres </Text>
             </Pressable>
           </View>
 
@@ -288,6 +281,10 @@ export default function HeaderMenu({navigation}) {
               <Image source = {require('../assets/Icons/filter-next-icon.png')} />
             </Pressable>
           </View>
+
+
+
+
 
 
 
@@ -331,10 +328,14 @@ export default function HeaderMenu({navigation}) {
 
 
 
+
+
+
+
           <View style = {styles.flex}>
             <Pressable style = {{flexDirection: 'row', alignItems: 'center', marginBottom: '0.5rem'}} onPress = { goHome }>
               <Image source = {require('../assets/Icons/back-icon.png')} />
-              <Text style = {{ color: '#ffffff', fontWeight: 600, fontSize: '1.1rem', marginLeft: '0.3rem', paddingBottom: 3}}> {i18n.t('HeaderMenu.Tornar')} </Text>
+              <Text style = {{ color: '#ffffff', fontWeight: 600, fontSize: '1.1rem', marginLeft: '0.3rem', paddingBottom: 3}}> Tornar </Text>
             </Pressable>
             
             <HeaderTitle title = {routeName} />

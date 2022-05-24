@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { View, Image, Pressable, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import Constants from 'expo-constants';
+import SplashScreen from 'react-native-splash-screen';
 import { useEffect } from 'react';
-import RNBootSplash from 'react-native-bootsplash';
 
 // Imports Custom Components
 import Home from './components/HomePage';
 import List from './components/ListPage';
-import Details from './components/Details_ListItem';
+import DetailCursos from './components/Details_Cursos';
+import DetailOfertes from './components/Details_Ofertes';
+
 import Header from './components/HeaderMenu';
-import Login from './components/LoginPage';
-import Register from './components/RegisterOferta2';
 
 // Import Navigation Stuff
 import { NavigationContainer } from '@react-navigation/native';
@@ -18,10 +19,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Import Dropdown Stuff
-import DropDownPicker from 'react-native-dropdown-picker';
+import DropDownPicker from 'react-native-dropdown-picker'
 
-// Import Localisation Stuff
-import i18n from './components/i18n';
 
 // Create Menu Navigator
 const Tab = createBottomTabNavigator();
@@ -34,19 +33,11 @@ export default function App() {
   var user = 'user';
   var nameUser;
 
-  function getUser() {
-    if (user != 'user') {
-      return nameUser;
-    } else {
-      return i18n.t('Navigator.Usuari');
-    }
+  if (user != 'user') {
+    userText = nameUser;
+  } else {
+    userText = "Usuari";
   }
-
-  useEffect(() => {
-    setTimeout(() => {
-      RNBootSplash.hide({fade: true});
-    }, 3000);
-  }, []);
 
   // Style
   const styles = StyleSheet.create({
@@ -69,14 +60,14 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <Tab.Navigator headerMode="screen">
-          <Tab.Screen name="Register" component={Register} 
+          <Tab.Screen name="Home" component={Home} 
             options={({ navigation }) => ({
               headerStyle:  {height: 0}, 
 
               tabBarButton: (props) => (
-                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Register')}>
+                <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Home')}>
                   <Image source = {require('./assets/Icons/inici-icon.png')} />
-                  <Text style={styles.iconTitle}> {i18n.t('Navigator.Inici')} </Text>
+                  <Text style={styles.iconTitle}> Inici </Text>
                 </Pressable>
               ), 
 
@@ -86,12 +77,12 @@ export default function App() {
           
           <Tab.Screen name="Cursos" component={List}
             options={({ navigation }) => ({
-              header: () => <Header style={{position: 'static'}}/>, 
+              headerStyle:  {height: 0}, 
 
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Cursos')}>
                   <Image source = {require('./assets/Icons/cursos-icon.png')} />
-                  <Text style={styles.iconTitle}> {i18n.t('Navigator.Cursos')} </Text>
+                  <Text style={styles.iconTitle}> Cursos </Text>
                 </Pressable>
               ), 
 
@@ -100,35 +91,46 @@ export default function App() {
           />
           <Tab.Screen name="Ofertes" component={List} 
               options={({ navigation }) => ({
-              header: () => <Header/>, 
+              headerStyle:  {height: 0}, 
 
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Ofertes')}>
                   <Image source = {require('./assets/Icons/ofertes-icon.png')} />
-                  <Text style={styles.iconTitle}> {i18n.t('Navigator.Ofertes')} </Text>
+                  <Text style={styles.iconTitle}> Ofertes </Text>
                 </Pressable>
               ), 
 
               tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'}, 
             })}
           />
-          <Tab.Screen name="Usuari" component={Login} 
+          <Tab.Screen name="Usuari" component={'none'} 
             options={({ navigation }) => ({
               headerStyle:  {height: 0}, 
 
               tabBarButton: (props) => (
                 <Pressable style = {styles.buttonMenu} onPress={() => navigation.navigate('Usuari')}>
                   <Image source = {require('./assets/Icons/usuari-icon.png')} />
-                  <Text style={styles.iconTitle}> {getUser()} </Text>
+                  <Text style={styles.iconTitle}> {userText} </Text>
                 </Pressable>
               ), 
 
               tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'},
             })}
           />
-          <Tab.Screen name="Detall" component={Details} 
+          <Tab.Screen name="Detall del curs" component={DetailCursos} 
             options={({ navigation }) => ({
-               header: () => <Header/>,
+              headerStyle:  {height: 0},
+
+              tabBarButton: (props) => (
+                <View style = {{ display: 'none' }}></View>
+              ), 
+
+              tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'}, 
+            })}
+          />
+          <Tab.Screen name="Detall de l'oferta" component={DetailOfertes} 
+            options={({ navigation }) => ({
+              headerStyle:  {height: 0},
 
               tabBarButton: (props) => (
                 <View style = {{ display: 'none' }}></View>
