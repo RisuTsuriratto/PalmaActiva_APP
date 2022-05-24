@@ -49,7 +49,10 @@
     "Nom": "Nom",
     "Primer cognom": "Primer cognom",
     "Segon cognom": "Segon cognom",
-    "Document": "DNI / NIE / Passaport",
+    "Llinatges": "Llinatges",
+    "DocumentP": "DNI / NIE / Passaport",
+    "Document": "DNI / NIE",
+    "Passaport": "Passaport",
     "Data": "Data de naixement",
     "Sexe": "Sexe",
     "Home": "Home",
@@ -57,11 +60,15 @@
     "Següent": "Següent",
     "Carrer": "Carrer",
     "Bloc": "Bloc",
+    "Escala": "Escala",
+    "Pis": "Pis",
     "Porta": "Porta",
     "Apartat": "Apartat de correus",
     "Aclarament": "Aclarament de l'adreça",
     "Telèfon": "Telèfon",
+    "Telèfon2": "Telèfon 2",
     "Adreça": "Adreça electrònica",
-    "Registrarse": "Registrar-se"
+    "Registrarse": "Registrar-se",
+    "Certifico": "Certifico que totes les dades d'aquest imprès són certes i autoritzo a PalmaActiva a utilitzar-les"
   }
 }

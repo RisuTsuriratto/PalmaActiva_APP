@@ -7,40 +7,42 @@ import {useRoute} from '@react-navigation/native';
 // Import Localisation Stuff
 import i18n from './i18n';
 
-// Login Page
-export default function LoginPage({ navigation }) {
+// Register Page
+export default function RegisterPage({ navigation }) {
 
   const route = useRoute();
   var routeText = route.name;
 
-  return (
+    return (
     <SafeAreaView style = {{backgroundColor: '#ffffff', height: '100%'}}>
       <View>
         <Image style = {styles.logo} source = {require('../assets/Logos/Logo_PalmaActiva.png')} />
         <View style = {styles.modal}>
           <Pressable>
             <Image source = {require('../assets/Icons/back-icon-red.png')} />
-            <Text style = {[styles.formheader, { marginLeft: '2rem', marginTop: '-1.7rem' }]}> {i18n.t('LoginPage.Tornar')} </Text>
+            <Text style = {[styles.formheader, { marginLeft: '2rem', marginTop: '-1.7rem' }]}> {i18n.t('RegisterPage.Tornar')} </Text>
           </Pressable>
-          <Text style = {[styles.formheader, { textAlign: 'right', marginRight: -2, marginTop: '-2.3rem' }]}> {i18n.t('LoginPage.Inici de sessió')} </Text>
+          <Text style = {[styles.formheader, { textAlign: 'right', marginRight: -2, marginTop: '-2.3rem' }]}> {i18n.t('RegisterPage.Registre')} </Text>
           <View style = {styles.container}>
             <View style = {styles.sectionStyle}>
-              <Image source = {require('../assets/Icons/person-icon-red.png')} style = {{margin: 10}} />
-              <TextInput style={[styles.input, {width: 180}]} placeholder = {i18n.t('LoginPage.Usuari')} placeholderTextColor = "#A2ACAB" underlineColorAndroid="transparent" />
+              <TextInput style={styles.input} placeholder = {i18n.t('RegisterPage.Nom')} placeholderTextColor = "#A2ACAB" underlineColorAndroid="transparent" />
             </View>
             <View style = {styles.sectionStyle}>
-              <Image source = {require('../assets/Icons/lock-icon-red.png')} style = {{margin: 10}} />
-              <TextInput style={[styles.input, {width: 180}]} placeholder = {i18n.t('LoginPage.Clau de pas')} placeholderTextColor = "#A2ACAB" underlineColorAndroid="transparent" />
+              <TextInput style={styles.input} placeholder = {i18n.t('RegisterPage.Llinatges')} placeholderTextColor = "#A2ACAB" underlineColorAndroid="transparent" />
             </View>
-            <Pressable>
-              <View style = {styles.submitButton}>
-                <Text style = {styles.buttonText}> {i18n.t('LoginPage.Identificarse')} </Text>
-              </View>
+            <View style = {styles.sectionStyle}>
+              <TextInput style={styles.input} placeholder = {i18n.t('RegisterPage.Document')} placeholderTextColor = "#A2ACAB" underlineColorAndroid="transparent" />
+            </View>
+            <View style = {styles.sectionStyle}>
+              <TextInput style={styles.input} placeholder = {i18n.t('RegisterPage.Passaport')} placeholderTextColor = "#A2ACAB" underlineColorAndroid="transparent" />
+            </View>
+            <View style = {styles.sectionStyle}>
+              <TextInput style={styles.input} placeholder = {i18n.t('RegisterPage.Telèfon')} placeholderTextColor = "#A2ACAB" underlineColorAndroid="transparent" />
+            </View>
+            <Pressable style = {{alignSelf: 'end', flexDirection: 'row'}}>
+              <Text style = {[styles.formheader, {paddingBottom: 0}]}>{i18n.t('RegisterPage.Següent')}</Text>
+              <Image style = {{marginLeft: '0.5rem',marginRight: '-0.5rem'}} source = {require('../assets/Icons/next-icon-red.png')} />
             </Pressable>
-            <Text style = {{}}>
-            {i18n.t('LoginPage.TextClauLogin1')}<span style = {{color: '#E03E52', fontWeight: 600}}> {i18n.t('LoginPage.SpanClauLogin1')}</span>.
-            <br/><br/>{i18n.t('LoginPage.TextLogin')}</Text>
-            <Text style = {{fontWeight: 600, marginLeft: -9}}>{i18n.t('LoginPage.TextLoginReg')}</Text>
           </View>
         </View>
       </View>
@@ -58,19 +60,6 @@ const styles = StyleSheet.create({
     margin: 'auto',
     top: 57,
   },
-  buttonText: {
-    textAlign: 'center',
-    marginTop: 14,
-    color: '#fff',
-    fontWeight: 600,
-    fontSize: 16
-  },
-  submitButton: {
-    height: 49,
-    width: 240,
-    margin: 10,
-    backgroundColor: '#E03E52'
-  },
   formheader: {
     color: '#E03E52',
     fontWeight: 600,
@@ -79,7 +68,7 @@ const styles = StyleSheet.create({
   },
   modal: {
     backgroundColor: '#ffffff',
-    top: 150,
+    top: 100,
     width: 275,
     margin: 'auto',
     padding: '1rem',
@@ -94,18 +83,18 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  container: {
-    flex: 1,
-    justifyContent: 'start',
-    alignItems: 'center',
-    margin: 10,
-  },
   input: {
     backgroundColor: '#ffffff',
     fontSize: 18,
     outline: 'none',
     height: 45,
     width: 240,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'start',
+    alignItems: 'center',
+    margin: 10,
   },
   sectionStyle: {
     flexDirection: 'row',
@@ -116,5 +105,6 @@ const styles = StyleSheet.create({
     height: 49,
     width: 240,
     margin: 10,
+    paddingHorizontal: 10
   }
 });

@@ -10,7 +10,7 @@ import List from './components/ListPage';
 import Details from './components/Details_ListItem';
 import Header from './components/HeaderMenu';
 import Login from './components/LoginPage';
-import Register from './components/RegisterPage';
+import Register from './components/RegisterOferta2';
 
 // Import Navigation Stuff
 import { NavigationContainer } from '@react-navigation/native';
