@@ -23,11 +23,11 @@
     "@react-navigation/native": "*",
     "@react-navigation/elements": "*",
     "react-native-splash-screen": "*",
+    "react-native-bouncy-checkbox": "*",
     "react-native-dropdown-picker": "*",
     "@react-navigation/bottom-tabs": "*",
     "@react-navigation/native-stack": "*",
-    "react-native-safe-area-context": "4.2.4",
-    "react-native-bouncy-checkbox": "*"
+    "react-native-safe-area-context": "4.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

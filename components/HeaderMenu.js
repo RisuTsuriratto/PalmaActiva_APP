@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { View, Text, TextInput, StyleSheet, Pressable, Image, Dimensions, Modal, FlatList, ScrollView } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { RadioButton } from 'react-native-paper';
 
 import HeaderTitle from './HeaderTitle';
 
@@ -32,134 +33,134 @@ export default function HeaderMenu({navigation}) {
 
   // Contenido de los filtros
   var filterFamilia = [
-    {key: 0, title: "Comerç"},
-    {key: 1, title: "Competències transversals"},
-    {key: 2, title: "Creació i gestió d'empreses"},
-    {key: 3, title: "Hoteleria i turisme"},
-    {key: 4, title: "Idiomes"},
-    {key: 5, title: "Nàutica"},
-    {key: 6, title: "Noves tecnologies avançat"},
-    {key: 7, title: "Noves tecnologies bàsic"}
+    {key: 0, title: "Comerç", status: "unchecked"},
+    {key: 1, title: "Competències transversals", status: "unchecked"},
+    {key: 2, title: "Creació i gestió d'empreses", status: "unchecked"},
+    {key: 3, title: "Hoteleria i turisme", status: "unchecked"},
+    {key: 4, title: "Idiomes", status: "unchecked"},
+    {key: 5, title: "Nàutica", status: "unchecked"},
+    {key: 6, title: "Noves tecnologies avançat", status: "unchecked"},
+    {key: 7, title: "Noves tecnologies bàsic", status: "unchecked"}
   ];
 
   var filterTipus = [
-    {key: 0, title: "Càpsula (Accions -10h)"},
-    {key: 1, title: "Curs online"},
-    {key: 2, title: "Curs presencial (Accions +10h)"},
-    {key: 3, title: "Jornada/Event/Conferència"},
-    {key: 4, title: "Online (en diferit)"},
-    {key: 5, title: "Online (en directe per streaming)"},
-    {key: 6, title: "Tallers Assesorament Laboral"},
+    {key: 0, title: "Càpsula (Accions -10h)", status: "unchecked"},
+    {key: 1, title: "Curs online", status: "unchecked"},
+    {key: 2, title: "Curs presencial (Accions +10h)", status: "unchecked"},
+    {key: 3, title: "Jornada/Event/Conferència", status: "unchecked"},
+    {key: 4, title: "Online (en diferit)", status: "unchecked"},
+    {key: 5, title: "Online (en directe per streaming)", status: "unchecked"},
+    {key: 6, title: "Tallers Assesorament Laboral", status: "unchecked"},
   ];
 
    var filterCategoria = [
-    {key: 0, title: "Activitat d'imatge personal"},
-    {key: 1, title: "Activitats immobiliàries"},
-    {key: 2, title: "Activitats informàtiques, NT i telecomunicació"},
-    {key: 3, title: "Activitats recreatives, esportives i espectacles"},
-    {key: 4, title: "Activitats socials, socioculturals i a la comunitat"},
-    {key: 5, title: "Administració d'empreses / consultories / gestories i despatxos"},
-    {key: 6, title: "Agricultura, ramaderia, pesca i jardineria"},
-    {key: 7, title: "Arts i oficis"},
-    {key: 8, title: "Comerç"},
-    {key: 9, title: "Comunicació i audiovisuals"},
-    {key: 10, title: "Construcció i serveis tècnics"},
-    {key: 11, title: "Educació i humanitats"},
-    {key: 12, title: "Hoteleria, restauració i turisme"},
-    {key: 13, title: "Industria d'alimentació i productes afins"},
-    {key: 14, title: "Industria de la fusta / metall / paper / fabvricació de mobles"},
-    {key: 15, title: "Industria química i farmacèutica"},
-    {key: 16, title: "Investigació i desenvolupament"},
-    {key: 17, title: "Nàutica"},
-    {key: 18, title: "Publicitat y márqueting"},
-    {key: 19, title: "Sanitat i salut"},
-    {key: 20, title: "Serveis de recursos humans"},
-    {key: 21, title: "Serveis domèstics id e neteja"},
-    {key: 22, title: "Transport (terrestre i aeri)"},
+    {key: 0, title: "Activitat d'imatge personal", status: "unchecked"},
+    {key: 1, title: "Activitats immobiliàries", status: "unchecked"},
+    {key: 2, title: "Activitats informàtiques, NT i telecomunicació", status: "unchecked"},
+    {key: 3, title: "Activitats recreatives, esportives i espectacles", status: "unchecked"},
+    {key: 4, title: "Activitats socials, socioculturals i a la comunitat", status: "unchecked"},
+    {key: 5, title: "Administració d'empreses / consultories / gestories i despatxos", status: "unchecked"},
+    {key: 6, title: "Agricultura, ramaderia, pesca i jardineria", status: "unchecked"},
+    {key: 7, title: "Arts i oficis", status: "unchecked"},
+    {key: 8, title: "Comerç", status: "unchecked"},
+    {key: 9, title: "Comunicació i audiovisuals", status: "unchecked"},
+    {key: 10, title: "Construcció i serveis tècnics", status: "unchecked"},
+    {key: 11, title: "Educació i humanitats", status: "unchecked"},
+    {key: 12, title: "Hoteleria, restauració i turisme", status: "unchecked"},
+    {key: 13, title: "Industria d'alimentació i productes afins", status: "unchecked"},
+    {key: 14, title: "Industria de la fusta / metall / paper / fabricació de mobles", status: "unchecked"},
+    {key: 15, title: "Industria química i farmacèutica", status: "unchecked"},
+    {key: 16, title: "Investigació i desenvolupament", status: "unchecked"},
+    {key: 17, title: "Nàutica", status: "unchecked"},
+    {key: 18, title: "Publicitat y márqueting", status: "unchecked"},
+    {key: 19, title: "Sanitat i salut", status: "unchecked"},
+    {key: 20, title: "Serveis de recursos humans", status: "unchecked"},
+    {key: 21, title: "Serveis domèstics id e neteja", status: "unchecked"},
+    {key: 22, title: "Transport (terrestre i aeri)", status: "unchecked"},
   ];
 
   var filterEspecialitat = [
     // 0 - Imatge Personal - No
     // 1 - Immobiliàries
-    {key: 0, title: "Guarda - mentenidor/a de finca rústica"},
-    {key: 1, title: "Personal administratiu coordinadoó immobiliària"},
+    {key: 0, title: "Guarda - mentenidor/a de finca rústica", status: "unchecked"},
+    {key: 1, title: "Personal administratiu coordinadoó immobiliària", status: "unchecked"},
     // 2 - Informàtiques
-    {key: 2, title: "Developer Frontend"},
-    {key: 3, title: "Informàtic/a"},
-    {key: 4, title: "Tècnic/a informàtic/a"},
-    {key: 5, title: "Ajudant Tècnic/a Sistemes Informàtics"},
-    {key: 6, title: "Community manager"},
-    {key: 7, title: "Tècnic/a màrqueting online"},
+    {key: 2, title: "Developer Frontend", status: "unchecked"},
+    {key: 3, title: "Informàtic/a", status: "unchecked"},
+    {key: 4, title: "Tècnic/a informàtic/a", status: "unchecked"},
+    {key: 5, title: "Ajudant Tècnic/a Sistemes Informàtics", status: "unchecked"},
+    {key: 6, title: "Community manager", status: "unchecked"},
+    {key: 7, title: "Tècnic/a màrqueting online", status: "unchecked"},
     // 3 - Recreatives, esportives
-    {key: 8, title: "Monitor/a d'anglés"},
-    {key: 9, title: "Monitor/a de temps lliure"},
-    {key: 10, title: "Tècnic/a superior d'activitats físiques i animació esportiva"},
-    {key: 11, title: "Tècnic/a Pilates i Intructor/a Fitness"},
-    {key: 12, title: "Director/a temps lliure"},
+    {key: 8, title: "Monitor/a d'anglés", status: "unchecked"},
+    {key: 9, title: "Monitor/a de temps lliure", status: "unchecked"},
+    {key: 10, title: "Tècnic/a superior d'activitats físiques i animació esportiva", status: "unchecked"},
+    {key: 11, title: "Tècnic/a Pilates i Intructor/a Fitness", status: "unchecked"},
+    {key: 12, title: "Director/a temps lliure", status: "unchecked"},
     // 4  Socials i socioculturals
-    {key: 13, title: "Tècnic/a Intermediació Laboral"},
-    {key: 14, title: "Treballador/a social"},
+    {key: 13, title: "Tècnic/a Intermediació Laboral", status: "unchecked"},
+    {key: 14, title: "Treballador/a social", status: "unchecked"},
     // 5 - Administració d'empreses - No
     // 6 - Agricultura, Ramaderia i pesca
-    {key: 15, title: "Netejador/a d'exteriors"},
-    {key: 16, title: "Supervisor/a de jardineria"},
-    {key: 17, title: "Peó jardineria - jardiner/a"},
+    {key: 15, title: "Netejador/a d'exteriors", status: "unchecked"},
+    {key: 16, title: "Supervisor/a de jardineria", status: "unchecked"},
+    {key: 17, title: "Peó jardineria - jardiner/a", status: "unchecked"},
     // 7 - Arts i oficis
-    {key: 18, title: "Costurer/a"},
+    {key: 18, title: "Costurer/a", status: "unchecked"},
     // 8 - Comerç
-    {key: 19, title: "Ajudant dependent/a"},
-    {key: 20, title: "Ajudant taller d'emmarcació"},
-    {key: 21, title: "Comercial d'energia solar"},
-    {key: 22, title: "Dependent/a"},
-    {key: 24, title: "Delegat/ada comercial"},
-    {key: 25, title: "Dependent/a mobles"},
+    {key: 19, title: "Ajudant dependent/a", status: "unchecked"},
+    {key: 20, title: "Ajudant taller d'emmarcació", status: "unchecked"},
+    {key: 21, title: "Comercial d'energia solar", status: "unchecked"},
+    {key: 22, title: "Dependent/a", status: "unchecked"},
+    {key: 24, title: "Delegat/ada comercial", status: "unchecked"},
+    {key: 25, title: "Dependent/a mobles", status: "unchecked"},
     // 9 - Comunicació i audiovisuals
-    {key: 26, title: "Expert/a Servei Atenció al client Anglés i Portugués"},
+    {key: 26, title: "Expert/a Servei Atenció al client Anglés i Portugués", status: "unchecked"},
     // 10 - Cosntrucció
-    {key: 27, title: "Cap de producció d'obra"},
-    {key: 28, title: "Oficial 1a de contrucció"},
-    {key: 29, title: "Oficial 3a instal·lació de portes automàtiques"},
-    {key: 30, title: "Operari/ària electricista"},
-    {key: 31, title: "Ajudant muntador/a tendals i pèrgoles"},
-    {key: 32, title: "Enginyer/a industrial"},
-    {key: 33, title: "Enginyer/a tècnic/a industrial"},
-    {key: 34, title: "Oficial instal·lador/a tendals i pèrgoles"},
-    {key: 35, title: "Operari/a recollida mostres"},
-    {key: 36, title: "Picapedrer/a"},
-    {key: 37, title: "Tècnic/a Obra"},
+    {key: 27, title: "Cap de producció d'obra", status: "unchecked"},
+    {key: 28, title: "Oficial 1a de contrucció", status: "unchecked"},
+    {key: 29, title: "Oficial 3a instal·lació de portes automàtiques", status: "unchecked"},
+    {key: 30, title: "Operari/ària electricista", status: "unchecked"},
+    {key: 31, title: "Ajudant muntador/a tendals i pèrgoles", status: "unchecked"},
+    {key: 32, title: "Enginyer/a industrial", status: "unchecked"},
+    {key: 33, title: "Enginyer/a tècnic/a industrial", status: "unchecked"},
+    {key: 34, title: "Oficial instal·lador/a tendals i pèrgoles", status: "unchecked"},
+    {key: 35, title: "Operari/a recollida mostres", status: "unchecked"},
+    {key: 36, title: "Picapedrer/a", status: "unchecked"},
+    {key: 37, title: "Tècnic/a Obra", status: "unchecked"},
     // 11 - Educació i humanitats
-    {key: 38, title: "Tècnic/a educació ambiental"},
+    {key: 38, title: "Tècnic/a educació ambiental", status: "unchecked"},
     // 12 - Hoteleria, restauració i turisme
-    {key: 39, title: "Agent de reserves"},
-    {key: 40, title: "Ajudant de cambrer/a"},
-    {key: 41, title: "Ajudant de cuina, sushiman i pizzer/a"},
-    {key: 42, title: "Bartender"},
-    {key: 43, title: "Cambrer/a"},
-    {key: 44, title: "Cambrer/a de pisos"},
-    {key: 45, title: "Cambrer/a de sala i ajudant de cambrer/a"},
-    {key: 46, title: "Cuiner/a"},
-    {key: 47, title: "Monitor/a de temps lliure / socorrista"},
-    {key: 48, title: "Recepcionista alberg juvenil"},
-    {key: 49, title: "Recepcionista hotel"},
-    {key: 50, title: "Segon maitre"},
-    {key: 51, title: "Xef o cap de cuina"},
-    {key: 52, title: "Ajudant de cuina"}, // Repetido en el 41 ????
-    {key: 53, title: "Animador/a hotel"},
-    {key: 54, title: "Booking agent"}, // Repetido en el 39 ????
-    {key: 55, title: "Bugader/a"},
-    {key: 56, title: "Cambrer/a de barra hotel"},
-    {key: 57, title: "Cambrer/a menjador hotel"},
-    {key: 58, title: "Cambrer/a restaurant"},
-    {key: 59, title: "Cambrer/a Room Service horari de nit"},
-    {key: 60, title: "Cambrer/a restaurant"},
-    {key: 61, title: "Cuiner/a hotel"},
-    {key: 62, title: "Faixí (Fajín)"},
-    {key: 63, title: "Rentaplats"},
+    {key: 39, title: "Agent de reserves", status: "unchecked"},
+    {key: 40, title: "Ajudant de cambrer/a", status: "unchecked"},
+    {key: 41, title: "Ajudant de cuina, sushiman i pizzer/a", status: "unchecked"},
+    {key: 42, title: "Bartender", status: "unchecked"},
+    {key: 43, title: "Cambrer/a", status: "unchecked"},
+    {key: 44, title: "Cambrer/a de pisos", status: "unchecked"},
+    {key: 45, title: "Cambrer/a de sala i ajudant de cambrer/a", status: "unchecked"},
+    {key: 46, title: "Cuiner/a", status: "unchecked"},
+    {key: 47, title: "Monitor/a de temps lliure / socorrista", status: "unchecked"},
+    {key: 48, title: "Recepcionista alberg juvenil", status: "unchecked"},
+    {key: 49, title: "Recepcionista hotel", status: "unchecked"},
+    {key: 50, title: "Segon maitre", status: "unchecked"},
+    {key: 51, title: "Xef o cap de cuina", status: "unchecked"},
+    {key: 52, title: "Ajudant de cuina", status: "unchecked"}, // Repetido en el 41 ????
+    {key: 53, title: "Animador/a hotel", status: "unchecked"},
+    {key: 54, title: "Booking agent", status: "unchecked"}, // Repetido en el 39 ????
+    {key: 55, title: "Bugader/a", status: "unchecked"},
+    {key: 56, title: "Cambrer/a de barra hotel", status: "unchecked"},
+    {key: 57, title: "Cambrer/a menjador hotel", status: "unchecked"},
+    {key: 58, title: "Cambrer/a restaurant", status: "unchecked"},
+    {key: 59, title: "Cambrer/a Room Service horari de nit", status: "unchecked"},
+    {key: 60, title: "Cambrer/a restaurant", status: "unchecked"},
+    {key: 61, title: "Cuiner/a hotel", status: "unchecked"},
+    {key: 62, title: "Faixí (Fajín)", status: "unchecked"},
+    {key: 63, title: "Rentaplats", status: "unchecked"},
     // 13 - Industria d'alimentació - No
     // 14 - Industria de fusta, etc.
-    {key: 64, title: "Oficial 2n ferrer"},
-    {key: 65, title: "Ferrer/a - Forjador/a"},
-    {key: 66, title: "Fuster/a"},
+    {key: 64, title: "Oficial 2n ferrer", status: "unchecked"},
+    {key: 65, title: "Ferrer/a - Forjador/a", status: "unchecked"},
+    {key: 66, title: "Fuster/a", status: "unchecked"},
 
   /*
     Pendiente
@@ -170,9 +171,9 @@ export default function HeaderMenu({navigation}) {
   // Estados
   const [searchText, setText] = useState('');
   const [showFilters, setShowFilters] = useState(false);
-  const [filterActive, setFilterActive] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [filterPressed, setFilterPressed] = useState(0);
+  const [checked, setChecked] = useState('1');
 
 
   // Funciones para los botones
@@ -241,19 +242,16 @@ export default function HeaderMenu({navigation}) {
     return (
       <SafeAreaView>
         <View style = {styles.container}>
-
           <View style = {styles.flex}> 
             <Pressable onPress={ goHome }>
               <Image source = {require('../assets/Logos/Isotipo.png')} />
             </Pressable>
-            
             <Pressable onPress={ logIn } style = {{borderColor: '#fff', borderWidth: 2,  width: '13rem', height: 49}}>
               <Text style = {{color: '#fff', fontSize: 15, fontWeight: 'bold', alignSelf: 'center', justifyContent: 'center', paddingTop: '0.7rem'}}> 
                 {i18n.t('HeaderMenu.Inici de sessió')} 
               </Text>
             </Pressable>
           </View>
-
           <View style= {{position: 'relative', marginVertical: 12}}>
             <TextInput
               style = { styles.input }
@@ -264,19 +262,13 @@ export default function HeaderMenu({navigation}) {
               onBlur = { search }
               value = { searchText }
             />
-
             <Pressable onPress = { search } style= {{ position: 'absolute', top: 7, left: 5}}>
               <Image source = {require('../assets/Icons/search-icon.png')}/>
             </Pressable>
-
             <Pressable onPress = { openFilter } style = {{backgroundColor: '#E03E52', borderColor: '#ffffff', borderWidth: 2,  width: '94px', position: 'absolute', right: 0, top: 0, bottom: 0 }}>
               <Text style = {{color: '#fff', fontSize: 15, fontWeight: 'bold', alignSelf: 'center', paddingTop: 11}}> {i18n.t('HeaderMenu.Filtres')} </Text>
             </Pressable>
           </View>
-
-
-
-
           <View style = {showFilters ? {display: 'block', marginBottom: 10} : {display: 'none'}}>
             <Pressable onPressIn = {() => setFilterPressed(0)} onPress = {() => setModalVisible(true) } style = {[styles.input, styles.filtro, styles.notLastFiltro]}>
               <Text style = {styles.textFiltro}> {filtro1} </Text>
@@ -288,10 +280,6 @@ export default function HeaderMenu({navigation}) {
               <Image source = {require('../assets/Icons/filter-next-icon.png')} />
             </Pressable>
           </View>
-
-
-
-
           <Modal
             animationType="fade"
             transparent={true}
@@ -302,23 +290,24 @@ export default function HeaderMenu({navigation}) {
           >
             <View style={styles.modalBG}>
               <View style={styles.modalView}>
-
                 <View style = {{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                   <Text style={[styles.modalHeading, {paddingTop: '8%'}]}>{filterNameToRender()}</Text>
                   <Pressable onPress={() => setModalVisible(!modalVisible)}>
                     <Image source = {require('../assets/Icons/close-icon.png')} />
                   </Pressable>
                 </View>
-
                 <ScrollView style = {{marginBottom: '10%', marginRight: -5}}>
                   <FlatList 
                     data = { filterShowList() }
-
                     showsHorizontalScrollIndicator={false}
-
                     renderItem={({item}) => 
-                      <Pressable style = {{marginBottom: 16, flexDirection: 'row', alignItems: 'center'}} onPress={() => setFilterActive(!filterActive)}>
-                        <Image source = { filterActive ? require('../assets/Icons/filter-circle-active.png') : require('../assets/Icons/filter-circle.png')}/>
+                      <Pressable style = {{marginBottom: 16, flexDirection: 'row', alignItems: 'center'}} onPress={() => setChecked(!checked)}>
+                        <RadioButton
+                          value= {item.title}
+                          color= '#E03E52'
+                          status={ checked === item.key ? 'checked' : 'unchecked' }
+                          onPress={() => setChecked(item.key)}
+                        />
                         <Text style = {{fontSize: 16, color: '#333333', marginLeft: 10}}>{item.title}</Text>
                       </Pressable>  
                     }
@@ -327,16 +316,11 @@ export default function HeaderMenu({navigation}) {
               </View>
             </View>
           </Modal>
-
-
-
-
           <View style = {styles.flex}>
             <Pressable style = {{flexDirection: 'row', alignItems: 'center', marginBottom: '0.5rem'}} onPress = { goHome }>
               <Image source = {require('../assets/Icons/back-icon.png')} />
               <Text style = {{ color: '#ffffff', fontWeight: 600, fontSize: '1.1rem', marginLeft: '0.3rem', paddingBottom: 3}}> {i18n.t('HeaderMenu.Tornar')} </Text>
             </Pressable>
-            
             <HeaderTitle title = {routeName} />
           </View>
         </View>
@@ -353,14 +337,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingTop: 15,
   },
-
   flex: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-
   input: {
     height: 49,
     backgroundColor: '#ffffff',
@@ -370,7 +352,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     outline: 'none',
   },
-
   filtro: {
     padding: 0,
     paddingLeft: 20,
@@ -379,23 +360,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: 'center'
   },
-
   notLastFiltro: {
     marginBottom: '0.8rem',
   },
-
   textFiltro: {
     color: "#A2ACAB",
     fontSize: 18,
   },
-
-
-
   modalBG: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.4)'
   },
-
   modalView: {
     minHeight: '50%',
     maxHeight: '90%',
@@ -412,14 +387,10 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
-  
   modalHeading: {
     marginBottom: 18,
     color: '#E03E52',
     fontSize: 26,
     fontWeight: 600
-  },
-
-
-  
+  }
 });
