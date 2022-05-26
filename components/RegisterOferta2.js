@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Text, View, Image, Pressable, Dimensions, StyleSheet, TextInput } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import CheckBox from '@react-native-community/checkbox';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 import {useRoute} from '@react-navigation/native';
 
@@ -30,11 +30,29 @@ export default function RegisterPage({ navigation }) {
             <View style = {styles.sectionStyle}>
               <TextInput style={styles.input} placeholder = 'Email' placeholderTextColor = "#A2ACAB" underlineColorAndroid="transparent" />
             </View>
-            <CheckBox
-              disabled={false}
-              value={toggleCheckBox}
-              onValueChange={(cosa) => setToggleCheckBox(!toggleCheckBox)}
+            <BouncyCheckbox
+              size={23}
+              fillColor="#E03E52"
+              unfillColor="#FFFFFF"
+              text={i18n.t("RegisterPage.Certifico")}
+              style= {{marginVertical: 8}}
+              iconStyle={{ borderColor: "#A2ACAB", borderRadius: 0, alignSelf: 'start', marginTop: 5 }}
+              textStyle={{ textDecorationLine: "none", width: 200, fontSize: 15}}
+              onPress={(isChecked: boolean) => {}}
             />
+            <Text style = {{alignSelf: 'start', marginLeft: -6}}>Captcha: </Text>
+            <View style = {{flexDirection: 'row', justifyContent: 'start', width: 250}}>
+              <Image style = {{marginRight:10, marginLeft: 5}} source = {require('../assets/ejemplo-captcha.png')} />
+              <Image source = {require('../assets/Icons/reload-icon-red.png')} />
+            </View>
+            <View style = {styles.sectionStyle}>
+              <TextInput style={styles.input} placeholder = {i18n.t('RegisterPage.Escriu')} placeholderTextColor = "#A2ACAB" underlineColorAndroid="transparent" />
+            </View>
+            <Pressable>
+              <View style = {styles.submitButton}>
+                <Text style = {styles.buttonText}> {i18n.t('RegisterPage.Registrarse')} </Text>
+              </View>
+            </Pressable>
           </View>
         </View>
       </View>
@@ -58,6 +76,19 @@ const styles = StyleSheet.create({
     fontSize: '1.1rem',
     paddingBottom: 15,
   },
+  buttonText: {
+    textAlign: 'center',
+    marginTop: 14,
+    color: '#fff',
+    fontWeight: 600,
+    fontSize: 16
+  },
+  submitButton: {
+    height: 49,
+    width: 240,
+    margin: 10,
+    backgroundColor: '#E03E52'
+  },
   modal: {
     backgroundColor: '#ffffff',
     top: 100,
@@ -74,30 +105,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-  },
-  inputSmol: {
-    backgroundColor: '#ffffff',
-    fontSize: 18,
-    outline: 'none',
-    textAlign: 'center',
-    height: 45,
-    width: 40,
-  },
-  containerSmol: {
-    flex: 4,
-    flexDirection: 'row',
-    justifyContent: 'start',
-    alignItems: 'center'
-  },
-  sectionStyleSmol: {
-    justifyContent: 'start',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    border: '1px solid rgba(162, 172, 171, 0.5)',
-    height: 49,
-    width: 50,
-    marginVertical: 10,
-    marginHorizontal: 6
   },
   input: {
     backgroundColor: '#ffffff',

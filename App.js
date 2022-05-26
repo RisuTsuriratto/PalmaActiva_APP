@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { View, Image, Pressable, ScrollView, StyleSheet, Dimensions, Text } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import Constants from 'expo-constants';
-import SplashScreen from 'react-native-splash-screen';
 import { useEffect } from 'react';
+import RNBootSplash from 'react-native-bootsplash';
 
 // Imports Custom Components
 import Home from './components/HomePage';
@@ -12,10 +11,10 @@ import DetailCursos from './components/Details_Cursos';
 import DetailOfertes from './components/Details_Ofertes';
 
 import Header from './components/HeaderMenu';
+import Login from './components/LoginPage';
 
 // Import Navigation Stuff
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Import Dropdown Stuff
@@ -38,6 +37,12 @@ export default function App() {
   } else {
     userText = "Usuari";
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      RNBootSplash.hide({fade: true});
+    }, 3000);
+  }, []);
 
   // Style
   const styles = StyleSheet.create({
@@ -103,7 +108,7 @@ export default function App() {
               tabBarStyle: {backgroundColor: '#E03E52', height: 'auto'}, 
             })}
           />
-          <Tab.Screen name="Usuari" component={'none'} 
+          <Tab.Screen name="Usuari" component={Login} 
             options={({ navigation }) => ({
               headerStyle:  {height: 0}, 
 
