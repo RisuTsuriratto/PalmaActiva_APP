@@ -1,11 +1,13 @@
-# Sample Snack app
+# Aplicación PalmaActiva
 
-Open the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by scanning the **QR code** or use the iOS or Android emulators. When you're done, click **Save** and share the link!
+Esta aplicación se nos propuso con el objetivo de PalmaActiva de facilitar mayor accesibilidad a los usuarios del portal de empleo y cursos formativos.
 
-When you're ready to see everything that Expo provides (or if you want to use your own editor) you can **Download** your project and use it with [expo-cli](https://docs.expo.io/get-started/installation).
+Realizamos el diseño de la aplicación en [Figma](https://www.figma.com/proto/lXAmqduejQOPJ2JeiitOnq/Dise%C3%B1o-APP?node-id=17%3A259&scaling=scale-down&page-id=0%3A1&starting-point-node-id=35%3A339&show-proto-sidebar=1).
 
-All projects created in Snack are publicly available, so you can easily share the link to this project via link, or embed it on a web page with the `<>` button.
+Nos hemos centrado en su funcionalidad y accesibilidad, haciendo uso de elementos iconográficos y del color corporativo para unificar el estilo de la interfaz.
 
-If you're having problems, you can tweet to us [@expo](https://twitter.com/expo) or ask in our [forums](https://forums.expo.io/c/snack).
+Para el desarrollo de la app hemos utilizado [React Native](https://reactnative.dev/), un framework de aplicaciones multiplataforma (Android / iOS).  Actualmente el desarrollo de la app se encuentra parada ya que encontramos en la navegación entre pestañas la mayor dificultad del proyecto, causada por una combinación entre nuestra falta de conocimiento del lenguaje de programación y una ausencia de tutoriales y/o explicaciones de cómo utilizar las diferentes librerías.
 
-Snack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack).
+La plataforma Snack es de código abierto y sirve para visualizar aplicaciones móviles programadas con React Native. Se puede encontrar su código en el [repositorio Github](https://github.com/expo/snack). En estos momentos funciona sólamente la opción de previsualización 'Web'. Las opciones 'Android' y 'iOS' no renderizan la aplicación correctamente, por razones que desconocemos.
+
+Equipo Palma Web V
